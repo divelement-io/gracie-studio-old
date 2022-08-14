@@ -1,0 +1,10 @@
+node_modules
+public
+.cache
+storybook-static
+plop-templates
+migrations
+src/mock/**
+.storybook
+.git
+*.stories.js

@@ -1,0 +1,27 @@
+import React from 'react'
+import styled from '@emotion/styled'
+import Section from 'components/Section'
+
+const Wrapper = styled(Section)``
+
+const {{componentName}} = ({
+	className,
+	theme,
+	prevTheme,
+	nextTheme,
+	isFirstSection,
+	id
+}) => (
+	<Wrapper
+		className={className}
+		setTheme={theme}
+		prevTheme={prevTheme}
+		nextTheme={nextTheme}
+		isFirstSection={isFirstSection}
+		id={id}
+	>
+		<h3>{{componentName}}</h3>
+	</Wrapper>
+)
+
+export default {{componentName}}

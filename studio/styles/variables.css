@@ -1,0 +1,30 @@
+:root {
+  /* Brand colors */
+  /*--brand-primary: #cc4a1e;*/
+  /*--brand-primary--inverted: #ffffff;*/
+  /*--brand-secondary: #ffa800;*/
+  /*--brand-secondary--inverted: #3c1609;*/
+  /* Typography */
+  /*--font-family-sans-serif: 'Nunito';*/
+  /*--font-size-base: 18px;*/
+  /*--text-color: var(--brand-secondary--inverted);*/
+  /* Main Navigation */
+  /*--main-navigation-color: var(--brand-secondary);*/
+  /*--main-navigation-color--inverted: var(--brand-secondary--inverted);*/
+}
+
+fieldset [data-ui='Box'] legend [data-ui='Text'] > span {
+  font-size: 1.25rem;
+  font-weight: bold;
+  /*margin: 1em 0 0.1em;*/
+}
+
+[data-ui='Box'] [data-testid] > [data-ui='Grid'],
+fieldset [data-ui='Box'] > [data-ui='Grid'] {
+  row-gap: 1rem;
+}
+
+fieldset[data-level='1'] > [data-ui='Box'] {
+  border: none;
+  padding-left: 0;
+}

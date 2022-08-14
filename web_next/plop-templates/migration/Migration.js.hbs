@@ -1,0 +1,23 @@
+module.exports = function (migration) {
+  const {{toLowerCase componentName}} = migration.createContentType('{{toLowerCase componentName}}')
+    .name('{{titleCase componentName}}')
+    .description('Content Type for the {{titleCase componentName}} component')
+    .displayField('internalName')
+
+  {{toLowerCase componentName}}.createField('internalName')
+    .name('Internal Name')
+    .type('Symbol')
+    .required(true)
+
+  const page = migration.editContentType('page')
+
+  // Update the linkContentType with all the required types
+  page.editField('components')
+    .items({
+      type: 'Link',
+      linkType: 'Entry',
+      validations: [
+        { linkContentType: [ 'text', 'productGrid', 'atf', 'fiftyfifty', '{{toLowerCase componentName}}' ] }
+      ]
+    })
+}
