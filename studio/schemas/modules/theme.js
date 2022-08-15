@@ -1,5 +1,5 @@
 import React from 'react'
-import themes from '../../../web/styles/themes'
+import themes from '../../../web/src/styles/themes'
 import IconUI from '../../components/IconUI'
 import ThemeIcon from "../../components/ThemeIcon"
 

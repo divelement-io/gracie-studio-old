@@ -5,8 +5,7 @@ export const query = graphql`
     _key
     _type
     theme
-    leftText
-    leftDescription
+    _rawLeftText(resolveReferences: {maxDepth: 10})
     _rawRightText(resolveReferences: {maxDepth: 10})
     actions {
       ...Button

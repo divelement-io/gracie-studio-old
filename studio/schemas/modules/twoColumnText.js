@@ -17,7 +17,7 @@ export default {
     {
       name: 'leftText',
       title: 'Headline',
-      type: 'string',
+      type: 'blockContent',
     },
     {
       name: 'rightText',
@@ -45,7 +45,6 @@ export default {
   preview: {
     select: {
       title: 'internalName',
-      // subtitle: 'leftText.eyebrow',
       hidden: 'hidden',
       theme: 'theme'
     },

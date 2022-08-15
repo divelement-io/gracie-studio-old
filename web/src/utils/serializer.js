@@ -4,8 +4,6 @@ import Image from 'src/components/Image'
 import Video from 'src/components/Video'
 import Button from 'src/components/Button'
 import Link from 'src/components/Link'
-import YoutubeVideo from 'src/components/Video/YoutubeVideo'
-import EmbedCode from 'src/components/EmbedCode'
 import { getSanityLink } from 'src/utils/format'
 
 const sanityConfig = {
@@ -104,9 +102,6 @@ export const Serializer = {
       }
       return <div className={getClassName('embeded-content', node.firstItem, node.lastItem)}><Video src={node?.video?.asset?.url}/></div>
     },
-    youTube: ({ node }) => {
-      return <div className={getClassName('embeded-content', node.firstItem, node.lastItem)}><YoutubeVideo src={node.url}/></div>
-    },
     button: ({ node }) => {
       let setTheme = 'default'
       if (node.theme === 'secondary') {
@@ -141,10 +136,6 @@ export const Serializer = {
           ))}
         </dl>
       </div>
-    },
-    embed: ({ node }) => {
-      // TODO
-      return <p><EmbedCode embedCode={node.embedCode} /></p>
     },
   },
   marks: {

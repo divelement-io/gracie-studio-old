@@ -14,13 +14,7 @@ export const query = graphql`
     media {
       ...Media
     }
-    videoPopup
     mediaCaption
-    text {
-      eyebrow
-      _rawText(resolveReferences: {maxDepth: 10})
-      _rawHeadline(resolveReferences: {maxDepth: 10})
-    }
     actions {
       ...Button
       ...Link

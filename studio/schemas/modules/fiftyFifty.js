@@ -44,6 +44,11 @@ export default {
       type: 'actions'
     },
     {
+      name: 'mediaCaption',
+      title: 'Media Caption',
+      type: 'text'
+    },
+    {
       name: 'mediaPlacement',
       title: 'Media Placement',
       type: 'string',

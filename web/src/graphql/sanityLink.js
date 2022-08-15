@@ -8,12 +8,6 @@ export const query = graphql`
     externalLink
     newTab
     type
-    postLink {
-      publishedAt
-      slug {
-        current
-      }
-    }
     file {
       asset {
         url
@@ -27,24 +21,6 @@ export const query = graphql`
               current
             }
           }
-        }
-      }
-      ... on SanityLowerSchool {
-        _type
-        school {
-          title
-        }
-      }
-      ... on SanityMiddleSchool {
-        _type
-        school {
-          title
-        }
-      }
-      ... on SanityUpperSchool {
-        _type
-        school {
-          title
         }
       }
     }

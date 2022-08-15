@@ -1,6 +1,6 @@
 import React from 'react'
 import { MdVisibilityOff } from 'react-icons/md'
-import themes from '../../web/styles/themes'
+import themes from '../../web/src/styles/themes'
 
 const SectionIcon = ({ children, hidden, theme }) => {
 	if (!theme) {

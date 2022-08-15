@@ -3,9 +3,8 @@ import { graphql } from 'gatsby'
 import SEO from 'src/components/SEO'
 import Header from 'src/components/Header'
 import Footer from 'src/components/Footer'
-import InstagramLinks from 'src/components/InstagramLinks'
+// import InstagramLinks from 'src/components/InstagramLinks'
 import ComponentRenderer from 'src/components/ComponentRenderer'
-import VideoPage from 'src/components/VideoPage'
 import { getBackupShareImage } from 'src/utils/getBackupShareImage'
 
 const Page = ({ data }) => {
@@ -32,21 +31,6 @@ const Page = ({ data }) => {
         // bannerColor={site.bannerColor}
         location={path}
       />
-
-      {page.type === 'videos' && (
-        <VideoPage
-          isFirstSection={true}
-          theme='default'
-          prevTheme={false}
-          nextTheme={false}
-          featuredVideo={page.videoPage.featuredVideo}
-          videos={page.videoPage.videos}
-        />
-      )}
-
-      {page.type === 'instagram' && (
-        <InstagramLinks items={page?.instagram?.items} isFirstSection />
-      )}
 
       {modules.map((item, index) => {
         const prevSection = modules[index - 1]

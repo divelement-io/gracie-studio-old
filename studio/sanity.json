@@ -1,12 +1,12 @@
 {
   "root": true,
+  "api": {
+    "projectId": "g6cz4pi4",
+    "dataset": "production"
+  },
   "project": {
     "name": "GW Gatsby Sanity Base",
     "basePath": "/"
-  },
-  "api": {
-    "projectId": "PLACEHOLDER_PULLED_FROM_ENV",
-    "dataset": "PLACEHOLDER_PULLED_FROM_ENV"
   },
   "plugins": [
     "@sanity/base",

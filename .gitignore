@@ -4,3 +4,10 @@ dist
 out
 .DS_Store
 sanitytutorialblog
+
+
+.cache
+public
+
+.env.development
+.env.production

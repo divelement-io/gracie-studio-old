@@ -9,10 +9,8 @@ export const query = graphql`
     media {
       ...Media
     }
-    videoPopup
     text {
       eyebrow
-      _rawHeadline(resolveReferences: {maxDepth: 10})
       _rawText(resolveReferences: {maxDepth: 10})
     }
     alignment
