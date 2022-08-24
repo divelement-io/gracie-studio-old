@@ -1,6 +1,5 @@
 import React from 'react';
 import S from '@sanity/desk-tool/structure-builder';
-import Emoji from 'a11y-react-emoji'
 import PreviewIFrame from '../src/components/previewIFrame'
 import { MdInsertDriveFile } from 'react-icons/md'
 const Icon = () => <MdInsertDriveFile size={24} />

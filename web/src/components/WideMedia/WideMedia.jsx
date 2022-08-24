@@ -254,12 +254,13 @@ const WideMedia = ({
     height = 'auto'
   }
 
+  console.log(actions)
+
   const { toggleModal } = useContext(AppContext)
 
   const fullWidth = width === 'fullWidth'
 
   const fullHeight = !isFirstSection ? winHeight : false
-  // const fullHeight = false
 
   const heightValues = {
     auto: 'auto',
@@ -272,12 +273,7 @@ const WideMedia = ({
   const hasOverlay = (text?._rawText && (text?._rawText !== null)) || (text?._rawHeadline && (text?._rawHeadline !== null)) || actions.length > 0
 
   const renderMedia = (mediaItem, size, hasOverlay, autoHeight) => {
-    // if (size === 'small' && !mediaItem) {
-    //   mediaItem = mediaMedium || media
-    // } else if (size === 'medium' && !mediaItem) {
-    //   mediaItem = media
-    // }
-    // console.log(mediaItem)
+
     if (mediaItem) {
       return (
         <MediaItem
@@ -340,16 +336,18 @@ const WideMedia = ({
                     <OverlaySection isFirstSection={isFirstSection} setTheme='navy'>
                       <Container>
                         <Grid small='[1]' {...overlayGridSettings}>
-                          <TextLockup
-                            eyebrow={text.eyebrow}
-                            text={text._rawText}
-                            headline={text._rawHeadline}
-                            textSize={paragraphSize}
-                            actions={actions}
-                            alignment={alignment}
-                            theme='navy'
-                            transitionIn={!isFirstSection}
-                          />
+                          <div style={{ maxWidth: '35rem', margin: 'auto'}}>
+                            <TextLockup
+                              eyebrow={text.eyebrow}
+                              text={text._rawText}
+                              headline={text._rawHeadline}
+                              textSize={paragraphSize}
+                              actions={actions}
+                              alignment={alignment}
+                              theme='navy'
+                              transitionIn={!isFirstSection}
+                            />
+                          </div>
                         </Grid>
                       </Container>
                     </OverlaySection>

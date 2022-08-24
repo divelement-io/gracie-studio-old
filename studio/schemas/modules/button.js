@@ -84,7 +84,7 @@ export default {
       type: 'string',
       initialValue: 'primary',
       options: {
-        list: ['primary', 'secondary']
+        list: ['primary', 'secondary', 'outline']
       }
     },
     {

@@ -213,6 +213,8 @@ const Button = ({
 		return renderedIcon
 	}
 
+	console.log(setTheme)
+
 	const renderButtonContent = () => {
 		if (loading) {
 			return <ButtonContent className='button-content'>

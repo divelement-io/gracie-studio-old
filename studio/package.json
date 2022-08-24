@@ -30,6 +30,7 @@
     "react-icons": "^4.4.0",
     "sanity-plugin-color-list": "^2.0.2",
     "sanity-plugin-tabs": "^2.0.1",
+    "sanity-plugin-tags": "^1.5.0",
     "styled-components": "^5.3.1"
   }
 }

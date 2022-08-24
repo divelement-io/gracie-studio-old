@@ -31,7 +31,6 @@ const Wrapper = styled(Section)`
     max-width: ${ ({ alignment }) => alignment === 'center' ? '42em' : '46em' };
     strong {
       font-weight: normal;
-      color: ${ colors.blue };
     }
   }
   ol,

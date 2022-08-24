@@ -3,10 +3,10 @@ import S from '@sanity/desk-tool/structure-builder'
 
 import { ConfigMenu } from './structure/config'
 import { PageMenuItem } from './structure/pages'
-// Ecommerce
-// import { ProductMenuItem } from './structure/products'
+import { CollectionMenuItem } from './structure/collections'
+import { WallpaperMenuItem } from './structure/wallpapers'
+
 // import { ProductVariantParent } from './structure/variants'
-// import { CollectionMenuItem } from './structure/collections'
 // import { SubscriptionMenuItem } from './structure/subscriptions'
 
 //
@@ -19,8 +19,6 @@ export default () =>
     .items([
       PageMenuItem,
       ConfigMenu,
-      // CollectionMenuItem,
-      // ProductMenuItem,
-      // ProductVariantParent,
-      // SubscriptionMenuItem,
+      CollectionMenuItem,
+      WallpaperMenuItem
     ])

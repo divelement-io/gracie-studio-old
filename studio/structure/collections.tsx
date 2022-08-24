@@ -2,7 +2,8 @@ import React from 'react';
 import S from '@sanity/desk-tool/structure-builder';
 import Emoji from 'a11y-react-emoji'
 
-const Icon = () => <Emoji style={{ fontSize: '2rem' }} symbol='🖼️' />
+import { MdCollections } from 'react-icons/md'
+const Icon = () => <MdCollections size={24} />
 
 export const CollectionMenuItem = S.listItem()
   .title('Collections')

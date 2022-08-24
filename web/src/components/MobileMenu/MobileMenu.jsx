@@ -108,9 +108,6 @@ const MobileMenu = ({
 								itemLink {
 									...Link
 								}
-								sublinks {
-									...Link
-								}
 							}
 						}
 					}

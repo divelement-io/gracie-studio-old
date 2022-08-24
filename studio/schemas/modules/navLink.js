@@ -10,39 +10,34 @@ export default {
       name: 'itemLink',
       type: 'link'
     },
-    {
-      name: 'sublinks',
-      title: 'Dropdown Links',
-      type: 'array',
-      options: {
-        editModal: 'popover'
-      },
-      of: [
-        { type: 'link' }
-      ],
-    }
   ],
   preview: {
     select: {
       title: 'itemLink.title',
       externalLink: 'itemLink.externalLink',
-      sublinks: 'sublinks',
     },
     prepare (selection) {
-      const { sublinks, externalLink } = selection
-      let hasSublinks = false
-      let sublinkLabel = 'sublinks'
-      if (sublinks?.length > 0) {
-        hasSublinks = true
-        if (sublinks.length === 1) {
-          sublinkLabel = 'sublink'
-        }
-      }
+      const { externalLink } = selection
+
       const fallbackSubtitle = externalLink ? 'Link to ' + externalLink : 'Link to page'
+
       return Object.assign({}, selection, {
-        media: hasSublinks > 0 ? <MdOpenInNew size='24px' /> : <MdLink size='24px' />,
-        subtitle: hasSublinks > 0 ? sublinks.length + ' ' + sublinkLabel : fallbackSubtitle
+        media:  <MdLink size='24px' />,
+        subtitle: fallbackSubtitle
       })
     }
   }
 }
+
+
+    // {
+    //   name: 'sublinks',
+    //   title: 'Dropdown Links',
+    //   type: 'array',
+    //   options: {
+    //     editModal: 'popover'
+    //   },
+    //   of: [
+    //     { type: 'link' }
+    //   ],
+    // }

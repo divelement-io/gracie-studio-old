@@ -81,9 +81,9 @@ function SEO ({
 	}
 
 	// Default SEO content from file structure
-	const localTouchIcon = host + appleTouchIcon.publicURL
-	const localFavicon = host + favicon.publicURL
-	const localShareImage = host + socialShareImage.publicURL
+	const localTouchIcon = host + appleTouchIcon?.publicURL
+	const localFavicon = host + favicon?.publicURL
+	const localShareImage = host + socialShareImage?.publicURL
 	// Sanity SEO content
 	const sanityFavicon = sanitySiteSettings?.favicon?.asset?.url
 	const sanityTouchIcon = sanitySiteSettings?.touchicon?.asset?.url

@@ -1,9 +1,13 @@
+
 export const margin = 'var(--site-margins)'
 export const gutter = 'var(--site-gutters)'
+
 export const containerSmall = '1 [12] 1'
+
 export const containerMedium = containerSmall
 export const containerLarge = containerSmall
 export const containerLarger = containerSmall
+
 export const containerMaxWidth = '100%'
 
 const colSpacingSmall = '0'

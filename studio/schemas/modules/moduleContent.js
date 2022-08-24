@@ -8,6 +8,8 @@ export default {
     { type: 'fiftyFifty' },
     { type: 'columns' },
     { type: 'twoColumnText' },
+    { type: 'collectionList' },
+    { type: 'wallpaperGrid' }
     // plopAddModules
   ]
 }

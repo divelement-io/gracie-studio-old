@@ -120,9 +120,6 @@ const Footer = () => {
 						itemLink {
 							...Link
 						}
-						sublinks {
-							...Link
-						}
 					}
 				}
 			}

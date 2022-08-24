@@ -19,89 +19,47 @@ import { colors, typography, animations, mq, util } from 'src/styles'
 
 const showHide = false // show and hide header on scroll
 export const headerHeight = (attr = 'height', multiplier = 1) => util.responsiveStyles(attr, (250 * multiplier), (200 * multiplier), (110 * multiplier), (75 * multiplier))
-export const headerHeightCollapsed = (attr = 'height') => util.responsiveStyles(attr, 80, 70, 66, 60)
+export const headerHeightCollapsed = (attr = 'height') => util.responsiveStyles(attr, 80, 70, 70, 60)
 const mobileBreak = 1010
-
-const Dropdown = styled.nav`
-  list-style: none;
-  position: absolute;
-  top: 100%;
-  // min-width: 200px;
-  border-radius: 0;
-  background: ${ colors.bgColor };
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility ${ animations.mediumSpeed } ease-in-out,
-    opacity ${ animations.mediumSpeed } ease-in-out,
-    transform ${ animations.mediumSpeed } cubic-bezier(0.44, 0.24, 0.16, 1);
-  background: ${ colors.lightGrey };
-  padding: 10px 16px 11px;
-  text-align: left;
-  left: -16px;
-  box-shadow: 0 4px 7px -2px ${ rgba(colors.textColor, 0.1) };
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  a {
-    padding: 3px 0;
-    color: ${ colors.lightTextColor };
-    display: block;
-    ${ typography.navStyle }
-    line-height: 1em;
-    padding: .5em 0;
-    &:hover {
-      color: ${ colors.textColor };
-    }
-  }
-  li {
-    width: 100%;
-    white-space: nowrap;
-  }
-`
 
 const NavLink = styled(Link)`
   display: block;
   ${ typography.navStyle }
   line-height: 1em;
   padding: 1em 0 .8em;
-  > svg {
-    vertical-align: middle;
-    margin: -4px -3px -3px 2px;
-    opacity: .4;
-  }
-  ${ ({ hasDropdown }) => hasDropdown ? `
-    position: relative;
-    > span, svg {
-      position: relative;
-      z-index: 2;
-      transition: opacity ${ animations.mediumSpeed } ease-in-out, transform ${ animations.mediumSpeed } ease-in-out;
-    }
-    &:after {
-      transition: background ${ animations.mediumSpeed } ease-in-out;
-      content: '';
-      display: block;
-      position: absolute;
-      background: transparent;
-      left: -16px;
-      right: -16px;
-      top: 0px;
-      bottom: 0;
-      z-index: 1;
-    }
-  ` : '' }
+  color: inherit;
+  display: block;
+
   transition:   padding ${ animations.mediumSpeed } ease-in-out,
                 margin ${ animations.mediumSpeed } ease-in-out,
                 background ${ animations.mediumSpeed } ease-in-out,
                 opacity ${ animations.mediumSpeed } ease-in-out,
                 color ${ animations.mediumSpeed } ease-in-out;
-  ${ ({ hasAtf, active }) => hasAtf ? `
-      color: inherit;
-    ` : `
-      color: inherit;
-      ${ !active && `&:hover { color: ${ colors.mainColor }; }` }
-  ` }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: red;
+    opacity: 0;
+    transform: translate3d(0, 0.5rem, 0);
+    transition: color ${ animations.mediumSpeed } ease-in-out,
+                opacity ${ animations.mediumSpeed } ease-in-out,
+                transform ${ animations.mediumSpeed } ease-in-out;
+  }
+
+  &:hover,
+  &.active {
+    color: inherit;
+    &:after {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
 `
 
 const Wrapper = styled.header`
@@ -121,7 +79,7 @@ const HeaderWrapper = styled.div`
               box-shadow ${ animations.mediumSpeed } ease-in-out;
   ${ ({ scrolled, hasAtf, mobileMenuOpen }) => scrolled ? `
     ${ headerHeightCollapsed() }
-    background: ${ colors.white };
+    background: ${ colors.offWhite };
     color: ${ colors.textColor };
     box-shadow: 0 1px 0 ${ rgba(colors.textColor, 0.1) };
   ` : `
@@ -150,25 +108,16 @@ const HeaderWrapper = styled.div`
 const HeaderContent = styled(Grid)``
 
 const HeaderLogo = styled(Logo)`
-  ${ util.responsiveStyles('width', 160, 130, 114, 114) }
-  margin-top: -8%;
+  ${ util.responsiveStyles('width', 180, 176, 176, 114) }
   height: auto;
-  transition: color ${ animations.mediumSpeed } ease-in-out, margin ${ animations.mediumSpeed } ease-in-out;
-  svg {
-    overflow: visible;
-  }
-  .logo-e {
-    color: ${ colors.mainColor };
-    transition: transform ${ animations.mediumSpeed } ease-in-out;
-  }
-  &:hover {
-    .logo-e {
-      transform: translateY(-10%);
-    }
-  }
+  transition: color ${ animations.mediumSpeed } ease-in-out, transform ${ animations.mediumSpeed } ease-in-out, width ${ animations.mediumSpeed } ease-in-out, , height ${ animations.mediumSpeed } ease-in-out;
+  overflow: visible;
+
   ${ ({ scrolled, hasAtf, mobileMenuOpen }) => scrolled ? `
-    margin-top: -3%;
     color: ${ colors.textColor };
+    overflow: hidden;
+    transform: translateY(4px);
+    height: 20px;
     ${ util.responsiveStyles('width', 160, 130, 114, 114) }
   ` : `
     ${ !hasAtf ? `
@@ -187,7 +136,7 @@ const HeaderLogo = styled(Logo)`
 `
 
 const LogoCol = styled.div`
-  text-align: left;
+  text-align: center  ;
   a {
     display: inline-block;
     vertical-align: top;
@@ -195,6 +144,8 @@ const LogoCol = styled.div`
     max-width: 100%;
   }
 `
+
+const NavCol = styled.div``
 
 const NavLinks = styled.ul`
   list-style: none;
@@ -211,22 +162,9 @@ const NavLinks = styled.ul`
       ${ typography.navStyle }
       line-height: 1em;
     }
-    &:hover {
-      ${ Dropdown } {
-        visibility: visible;
-        opacity: 1;
-      }
-      ${ NavLink } {
-        svg {
-          opacity: 1;
-          transform: rotate(-180deg);
-        }
-        &:after {
-          background: ${ colors.lightGrey };
-        }
-      }
-    }
+
     &:not(:last-of-type) {
+
       ${ util.responsiveStyles('margin-right', 40, 30, 24, 20) }
     }
   }
@@ -294,9 +232,6 @@ const Header = ({
                 itemLink {
                   ...Link
                 }
-                sublinks {
-                  ...Link
-                }
               }
             }
           }
@@ -306,7 +241,11 @@ const Header = ({
   )
 
   const menus = allSanityMenus?.edges
+
   const navigation = menus.filter(menu => menu?.node?.slug?.current === 'main-navigation')[0]?.node?.items
+
+  const leftNavigation = menus.filter(menu => menu?.node?.slug?.current === 'left-navigation')[0]?.node?.items
+  const rightNavigation = menus.filter(menu => menu?.node?.slug?.current === 'right-navigation')[0]?.node?.items
 
   const siteTitle = allSanitySiteSettings?.edges[0]?.node?.title
   const [bannerVisible, toggleBanner] = useState(true)
@@ -315,55 +254,6 @@ const Header = ({
 
   const pathname = location
   const pageHasAtf = hasAtf
-
-  const renderHeaderButtons = scrolled => {
-    return (
-      <div css={css`display: flex;`}>
-        <Button
-          to='https://careers.ascendlearning.org/'
-          external
-          size='small'
-          setTheme={hasAtf && !scrolled ? 'white' : 'mainColor'}
-          css={css`
-            ${ util.responsiveStyles('margin-right', 20, 16, 14, 10) }
-            ${ mq.mediumAndBelow } {
-              padding-left: 12px;
-              padding-right: 12px;
-              min-width: 0;
-            }
-          `}
-        >
-          <ResponsiveComponent
-            custom={{
-              breakpoint: 475,
-              content: 'View careers'
-            }}
-            small='Careers'
-          />
-        </Button>
-        <Button
-          to='/enroll'
-          size='small'
-          setTheme={hasAtf && !scrolled ? 'mainColor' : 'textColor'}
-          css={css`
-            ${ mq.mediumAndBelow } {
-              padding-left: 12px;
-              padding-right: 12px;
-              min-width: 0;
-            }
-          `}
-        >
-          <ResponsiveComponent
-            custom={{
-              breakpoint: 475,
-              content: 'Enroll your child'
-            }}
-            small='Enroll'
-          />
-        </Button>
-      </div>
-    )
-  }
 
   return (
     <Fragment>
@@ -407,14 +297,38 @@ const Header = ({
               >
                 <HeaderContent
                   small="m [4] [8] m"
-                  medium="m [4] [8] m"
-                  // large="1 [8] [8] [8] 1"
+                  medium="m [4] [3] [4] m"
                   vAlign="center"
                   hasAtf={pageHasAtf}
                   navVisible={!scrolledUp && !scrolledToTop && showHide}
                 >
+                  <NavCol>
+                    <NavLinks alignment="left">
+                      {leftNavigation && leftNavigation.map((item, index) => {
+                          const { itemLink } = item
+                          const linkSlug = itemLink?.link?.content?.main?.slug?.current
+                          return itemLink.title && (
+                            <li key={'header-link-' + item._key} >
+                              <NavLink
+                                target={itemLink.newTab && '_blank'}
+                                external={itemLink.type === 'externalLink'}
+                                scrolled={scrolled}
+                                hasAtf={pageHasAtf}
+                                to={getSanityLink(itemLink)}
+                                active={pathname === linkSlug}
+                                key={itemLink._key}
+                              >
+                                {itemLink.title}
+                              </NavLink>
+                            </li>
+                          )
+                      })}
+
+                    </NavLinks>
+                  </NavCol>
                   <LogoCol>
-                    <div style={{ display: 'inline-block', verticalAlign: 'top' }}>
+
+                    <div style={{ display: 'inline-block'}}>
                       <Link to="/" title={siteTitle}>
                         <HeaderLogo
                           scrolled={scrolled}
@@ -424,34 +338,13 @@ const Header = ({
                       </Link>
                     </div>
                   </LogoCol>
-                  <div>
+                  <NavCol>
                     <NavLinks alignment="right">
-                      <ResponsiveComponent
-                        small={
-                          <>
-                          <li>
-                          {renderHeaderButtons(scrolled)}</li>
-                          <MenuIcon id="mobile-menu-icon">
-                            <button onClick={() => toggleMobileMenu(!mobileMenu)} aria-label='Toggle Navigation'>
-                              <AnimatedIcon
-                                icon={mobileMenu ? 'close' : 'menu'}
-                              />
-                            </button>
-                          </MenuIcon>
-                          </>
-                        }
-                        custom={{
-                          breakpoint: mobileBreak,
-                          content: <>
-                            {navigation && navigation.map((item, index) => {
+                     {rightNavigation && rightNavigation.map((item, index) => {
                               const { itemLink } = item
                               const linkSlug = itemLink?.link?.content?.main?.slug?.current
-                              const hasDropdown = item?.sublinks?.length > 0
-                              if (!itemLink.title) {
-                                return false
-                              }
-                              return (
-                                <li key={'header-link-' + item._key} css={css`&:hover { color: ${ colors.mainColor }; }`}>
+                              return itemLink.title && (
+                                <li key={'header-link-' + item._key} >
                                   <NavLink
                                     target={itemLink.newTab && '_blank'}
                                     external={itemLink.type === 'externalLink'}
@@ -460,66 +353,37 @@ const Header = ({
                                     to={getSanityLink(itemLink)}
                                     active={pathname === linkSlug}
                                     key={itemLink._key}
-                                    hasDropdown={hasDropdown}
                                   >
-                                    <span>{itemLink.title}</span>{hasDropdown && (<MdKeyboardArrowDown size={18}/>)}
+                                    {itemLink.title}
                                   </NavLink>
-                                  {item.sublinks && item?.sublinks?.length > 0 && (
-                                    <Dropdown>
-                                      {item.sublinks.map((dropdownLink, index) => (
-                                        <li key={dropdownLink._key}>
-                                          <Link
-                                            target={dropdownLink.newTab && '_blank'}
-                                            external={dropdownLink.type === 'externalLink' || dropdownLink.type === 'fileLink'}
-                                            scrolled={scrolled}
-                                            hasAtf={pageHasAtf}
-                                            to={getSanityLink(dropdownLink)}
-                                            active={pathname === linkSlug}
-                                            key={dropdownLink._key}
-                                          >
-                                            {dropdownLink.title}
-                                          </Link>
-                                        </li>
-                                      ))}
-                                    </Dropdown>
-                                  )}
                                 </li>
                               )
                             })}
-                            <li>
-                              {renderHeaderButtons(scrolled)}
-                            </li>
-                          </>
-                        }}
-                      />
                     </NavLinks>
-                  </div>
+                    <MobileMenu
+                      open={mobileMenu}
+                      toggleMobileMenu={toggleMobileMenu}
+                      navLinks={navigation}
+                      pathname={pathname}
+                    />
+                  </NavCol>
                 </HeaderContent>
               </HeaderWrapper>
             </Wrapper>
           )
         }}
       </ScrollListener.Consumer>
-
-      <ResponsiveComponent
-        small={
-          <MobileMenu
-            open={mobileMenu}
-            toggleMobileMenu={toggleMobileMenu}
-            navLinks={navigation}
-            pathname={pathname}
-          // footerColumn1={footerColumn1}
-          // footerColumn2={footerColumn2}
-          />
-        }
-        custom={{
-          breakpoint: mobileBreak,
-          content: <span />
-        }}
-      />
-
     </Fragment>
   )
 }
 
 export default Header
+
+
+// <MenuIcon id="mobile-menu-icon">
+//   <button onClick={() => toggleMobileMenu(!mobileMenu)} aria-label='Toggle Navigation'>
+//     <AnimatedIcon
+//       icon={mobileMenu ? 'close' : 'menu'}
+//     />
+//   </button>
+// </MenuIcon>

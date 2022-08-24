@@ -12,15 +12,21 @@ const responsiveStyles = util.responsiveStyles
 // All global styles
 const globalStyles = `
   ${ fonts.MaterialIconsFont }
-  ${ fonts.AvenirFont }
-  ${ fonts.AvenirObliqueFont }
-  ${ fonts.AvenirMediumFont }
-  ${ fonts.AvenirMediumObliqueFont }
-  ${ fonts.AvenirHeavyFont }
-  ${ fonts.AvenirHeavyObliqueFont }
-  ${ fonts.DidotFont }
+  ${ fonts.FuturaFont }
+  ${ fonts.FuturaMediumFont }
+  ${ fonts.FuturaBoldFont }
+  ${ fonts.FuturaHeavyFont }
+
+  ${ fonts.GaramondProFont }
+  ${ fonts.GaramondProItalicFont }
+  ${ fonts.GaramondProSemiBoldFont }
+  ${ fonts.GaramondProSemiBoldItalicFont }
+  ${ fonts.GaramondProBoldFont }
+  ${ fonts.GaramondProBoldItalicFont }
 
   :root {
+
+
     // Colors
     --bg-color: ${ colors.bgColor };
     --bg-color: ${ colors.bgColor };
@@ -34,11 +40,18 @@ const globalStyles = `
     --hr-color: ${ colors.hrColor };
 
     // Grid
-    --site-margins: ${ 100 / 20 }vw;
+    --site-width: calc(100% - 9.5rem);
+    --site-max-width: 1500px;
+    --site-margins: 4.5rem;
+    --site-mobile-margins: 2.25rem;
     --vertical-spacing: clamp(40px, ${ 100 / 14 }vw, 140px);
-    --site-gutters: 3vw;
+    --site-gutters: 2.25rem;
+
+    --site-wide-gutters: 4.75rem;
+    --site-tight-gutters: 1.125rem;
+
     ${ mq.extraLargeAndUp } {
-      --site-margins: ${ 100 / 14 }vw;
+      --site-margins: 4.75rem;
     }
   }
 
@@ -77,10 +90,6 @@ const globalStyles = `
 
   em, i {
     font-style: italic;
-  }
-
-  .blue {
-    color: ${ colors.blue };
   }
 
   h1, h2, h3, h4, h5, h6, blockquote, p, ul, ol {
@@ -125,7 +134,6 @@ const globalStyles = `
     ${ responsiveStyles('margin-bottom', 12, 10, 8, 8) }
     strong {
       font-weight: normal;
-      color: ${ colors.blue };
     }
   }
 
@@ -135,7 +143,6 @@ const globalStyles = `
     ${ responsiveStyles('margin-bottom', 10, 10, 8, 8) }
     strong {
       font-weight: normal;
-      color: ${ colors.blue };
     }
   }
 
@@ -145,7 +152,6 @@ const globalStyles = `
     ${ responsiveStyles('margin-bottom', 14, 12, 12, 10) }
     strong {
       font-weight: normal;
-      color: ${ colors.blue };
     }
   }
 
@@ -155,7 +161,6 @@ const globalStyles = `
     ${ responsiveStyles('margin-bottom', 14, 12, 12, 10) }
     strong {
       font-weight: normal;
-      color: ${ colors.blue };
     }
   }
 
@@ -164,7 +169,6 @@ const globalStyles = `
     ${ responsiveStyles('margin-top', 24, 16, 16, 8) }
     strong {
       font-weight: normal;
-      color: ${ colors.blue };
     }
     margin-bottom: 0;
   }
@@ -204,6 +208,11 @@ const globalStyles = `
                   background ${ animations.mediumSpeed } ease-in-out,
                   opacity ${ animations.mediumSpeed } ease-in-out,
                   transform ${ animations.mediumSpeed } ease-in-out;
+    &:hover,
+    &:focus {
+      outline: none;
+      color: ${ colors.textColor };
+    }
   }
 
   // Remove grey rectangle from iOS taps
@@ -226,6 +235,7 @@ const globalStyles = `
     max-width: 100%;
     height: auto;
     vertical-align: top;
+    display: block;
   }
 
   time {
@@ -243,6 +253,25 @@ const globalStyles = `
     ${ mq.smallAndBelow } {
       padding: 0 !important;
     }
+  }
+
+  .linen {
+    color: ${ colors.linen };
+  }
+
+  .bg-color {
+    background-color: ${ colors.bgColor };
+  }
+
+  .overlay {
+    background ${ colors.textColor };
+    opacity: 0.07;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
   }
 
 `

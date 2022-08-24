@@ -14,12 +14,8 @@ import siteSettings from './siteSettings'
 import page from './types/page'
 import menus from './types/menus'
 import post from './types/post'
-
-// Ecommerce Types
-// import product from './types/ecommerce/product'
-// import variant from './types/ecommerce/variant'
-// import collection from './types/ecommerce/collection'
-// import subscription from './types/ecommerce/subscription'
+import wallpaper from './types/wallpaper'
+import collection from './types/collection'
 
 import theme from './modules/theme'
 import textLockup from './modules/textLockup'
@@ -41,31 +37,24 @@ import wideMedia from './modules/wideMedia'
 import fiftyFifty from './modules/fiftyFifty'
 import columns from './modules/columns'
 import column from './modules/column'
-// plopImportModules
+import wallpaperGrid from './modules/wallpaperGrid'
+import collectionList from './modules/collectionList'
 
-//
 import seo from './modules/seo'
 import social from './modules/social'
 import socialLink from './modules/socialLink'
 import pageItem from './modules/pageItem'
-import pageModule from './modules/pageModule'
 import standardText from './modules/standardText'
 import moduleContent from './modules/moduleContent'
-// Ecommerce Modules
-// import productGrid from './modules/ecommerce/productGrid'
-// import productModule from './modules/ecommerce/productModule'
-// import shopifyProductModule from './modules/ecommerce/shopifyProductModule'
-// import shopifyVariantModule from './modules/ecommerce/shopifyVariantModule'
-// import variantModule from './modules/ecommerce/variantModule'
-// import defaultVariant from './modules/ecommerce/defaultVariant'
 
+import pageModule from './modules/pageModule'
+import wallpaperModule from './modules/wallpaperModule'
+import collectionModule from './modules/collectionModule'
 
 // GraphQL Tab Modules
 import pageContent from './tabs/pageContent'
-// Ecommerce Tab Modules
-// import variantContent from './tabs/ecommerce/variantContent'
-// import productContent from './tabs/ecommerce/productContent'
-
+import wallpaperContent from './tabs/wallpaperContent'
+import collectionContent from './tabs/collectionContent'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -79,11 +68,9 @@ export default createSchema({
     siteSettings,
     page,
     menus,
-    // post,
-    // collection,
-    // product,
-    // variant,
-    // subscription, // This can be disabled/hidden if not using recharge
+    post,
+    collection,
+    wallpaper,
     theme,
     textLockup,
     actions,
@@ -104,9 +91,8 @@ export default createSchema({
     fiftyFifty,
     columns,
     column,
-    // plopAddModules
-    //
-    // productGrid,
+    wallpaperGrid,
+    collectionList,
     pageModule,
     pageItem,
     social,
@@ -117,15 +103,14 @@ export default createSchema({
     blockContent,
     blockText,
     // Product Specific Modules
-    // productModule,
-    // shopifyProductModule,
-    // shopifyVariantModule,
-    // variantModule,
-    // defaultVariant,
+    wallpaperModule,
+    collectionModule,
+
     // GrapqhQL Tab Things
     pageContent,
-    // productContent,
-    // variantContent
+    wallpaperContent,
+    collectionContent,
+
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

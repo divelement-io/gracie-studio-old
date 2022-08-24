@@ -186,13 +186,7 @@ const TextLockup = ({
 							{actions.map((action, index) => {
 								if (action.title) {
 									let handleClick = () => { return null }
-									if (getSanityLink(action).includes('schoolmint') && typeof window !== 'undefined') {
-										handleClick = () => {
-											if (window.gtag != null && window.gtag_report_conversion != null) {
-												window.gtag_report_conversion(getSanityLink(action))
-											}
-										}
-									}
+
 
 									if (action._type === 'button') {
 										let actionTheme = 'default'

@@ -1,26 +1,36 @@
+import FuturaStdBookWoff from '../assets/fonts/futura/futura-std-book.woff'
+import FuturaStdBookWoff2 from '../assets/fonts/futura/futura-std-book.woff2'
+
+import FuturaStdMediumWoff from '../assets/fonts/futura/FuturaStd-Medium.woff'
+import FuturaStdMediumWoff2 from '../assets/fonts/futura/FuturaStd-Medium.woff2'
+
+import FuturaStdHeavyWoff from '../assets/fonts/futura/futura-std-heavy.woff'
+import FuturaStdHeavyWoff2 from '../assets/fonts/futura/futura-std-heavy.woff2'
+
+import FuturaStdBoldWoff from '../assets/fonts/futura/futura-std-bold.woff'
+import FuturaStdBoldWoff2 from '../assets/fonts/futura/futura-std-bold.woff2'
+
+
+import AGaramondProRegularWoff from '../assets/fonts/garamond/AGaramondPro-Regular.woff'
+import AGaramondProRegularWoff2 from '../assets/fonts/garamond/AGaramondPro-Regular.woff2'
+
+import AGaramondProItalicWoff from '../assets/fonts/garamond/AGaramondPro-Italic.woff'
+import AGaramondProItalicWoff2 from '../assets/fonts/garamond/AGaramondPro-Italic.woff2'
+
+import AGaramondProSemiboldWoff from '../assets/fonts/garamond/AGaramondPro-Semibold.woff'
+import AGaramondProSemiboldWoff2 from '../assets/fonts/garamond/AGaramondPro-Semibold.woff2'
+
+import AGaramondProSemiboldItalicWoff from '../assets/fonts/garamond/AGaramondPro-SemiboldItalic.woff'
+import AGaramondProSemiboldItalicWoff2 from '../assets/fonts/garamond/AGaramondPro-SemiboldItalic.woff2'
+
+import AGaramondProBoldWoff from '../assets/fonts/garamond/AGaramondPro-Bold.woff'
+import AGaramondProBoldWoff2 from '../assets/fonts/garamond/AGaramondPro-Bold.woff2'
+
+import AGaramondProBoldItalicWoff from '../assets/fonts/garamond/AGaramondPro-BoldItalic.woff'
+import AGaramondProBoldItalicWoff2 from '../assets/fonts/garamond/AGaramondPro-BoldItalic.woff2'
+
 import MaterialIconsWoff from '../assets/fonts/icons/material-icons-regular.woff'
 import MaterialIconsWoff2 from '../assets/fonts/icons/material-icons-regular.woff2'
-
-import AvenirWoff from '../assets/fonts/avenir/AvenirLTStd-Roman.woff'
-import AvenirWoff2 from '../assets/fonts/avenir/AvenirLTStd-Roman.woff2'
-
-import AvenirObliqueWoff from '../assets/fonts/avenir/AvenirLTStd-BookOblique.woff'
-import AvenirObliqueWoff2 from '../assets/fonts/avenir/AvenirLTStd-BookOblique.woff2'
-
-import AvenirMediumWoff from '../assets/fonts/avenir/AvenirLTStd-Medium.woff'
-import AvenirMediumWoff2 from '../assets/fonts/avenir/AvenirLTStd-Medium.woff2'
-
-import AvenirMediumObliqueWoff from '../assets/fonts/avenir/AvenirLTStd-MediumOblique.woff'
-import AvenirMediumObliqueWoff2 from '../assets/fonts/avenir/AvenirLTStd-MediumOblique.woff2'
-
-import AvenirHeavyWoff from '../assets/fonts/avenir/AvenirLTStd-Heavy.woff'
-import AvenirHeavyWoff2 from '../assets/fonts/avenir/AvenirLTStd-Heavy.woff2'
-
-import AvenirHeavyObliqueWoff from '../assets/fonts/avenir/AvenirLTStd-HeavyOblique.woff'
-import AvenirHeavyObliqueWoff2 from '../assets/fonts/avenir/AvenirLTStd-HeavyOblique.woff2'
-
-import DidotWoff from '../assets/fonts/didot/DidotLTStd-Regular.woff'
-import DidotWoff2 from '../assets/fonts/didot/DidotLTStd-Regular.woff2'
 
 export const fontFace = (fontName, woff, woff2, fontWeight = 'normal', fontStyle = 'normal') => `
 	@font-face {
@@ -35,13 +45,20 @@ export const fontFace = (fontName, woff, woff2, fontWeight = 'normal', fontStyle
 export const MaterialIcons = 'Material Icons'
 export const MaterialIconsFont = fontFace(MaterialIcons, MaterialIconsWoff, MaterialIconsWoff2)
 
-export const Avenir = 'Avenir'
-export const AvenirFont = fontFace(Avenir, AvenirWoff, AvenirWoff2)
-export const AvenirObliqueFont = fontFace(Avenir, AvenirObliqueWoff, AvenirObliqueWoff2, 'normal', 'italic')
-export const AvenirMediumFont = fontFace(Avenir, AvenirMediumWoff, AvenirMediumWoff2, 700)
-export const AvenirMediumObliqueFont = fontFace(Avenir, AvenirMediumObliqueWoff, AvenirMediumObliqueWoff2, 700, 'italic')
-export const AvenirHeavyFont = fontFace(Avenir, AvenirHeavyWoff, AvenirHeavyWoff2, 900)
-export const AvenirHeavyObliqueFont = fontFace(Avenir, AvenirHeavyObliqueWoff, AvenirHeavyObliqueWoff2, 900, 'italic')
+export const Futura = 'Futura'
+export const FuturaFont = fontFace(Futura, FuturaStdBookWoff, FuturaStdBookWoff2)
+export const FuturaMediumFont = fontFace(Futura, FuturaStdMediumWoff, FuturaStdMediumWoff2, 400)
+export const FuturaHeavyFont = fontFace(Futura, FuturaStdHeavyWoff, FuturaStdHeavyWoff2, 500)
+export const FuturaBoldFont = fontFace(Futura, FuturaStdBoldWoff, FuturaStdBoldWoff2, 600)
 
-export const Didot = 'Didot'
-export const DidotFont = fontFace(Didot, DidotWoff, DidotWoff2)
+export const GaramondPro = 'GaramondPro'
+
+export const GaramondProFont = fontFace(GaramondPro, AGaramondProRegularWoff, AGaramondProRegularWoff2)
+export const GaramondProItalicFont = fontFace(GaramondPro, AGaramondProItalicWoff, AGaramondProItalicWoff2, 'normal', 'italic')
+
+export const GaramondProSemiBoldFont = fontFace(GaramondPro, AGaramondProSemiboldWoff, AGaramondProSemiboldWoff2, 500)
+export const GaramondProSemiBoldItalicFont = fontFace(GaramondPro, AGaramondProSemiboldItalicWoff, AGaramondProSemiboldItalicWoff2, 500, 'italic')
+
+export const GaramondProBoldFont = fontFace(GaramondPro, AGaramondProBoldWoff, AGaramondProBoldWoff2, 700)
+export const GaramondProBoldItalicFont = fontFace(GaramondPro, AGaramondProBoldItalicWoff, AGaramondProBoldItalicWoff2, 700, 'italic')
+

@@ -5,11 +5,13 @@ import { responsiveStyles } from './util'
 import './fonts'
 
 // Place global Typography in this file
-export const primaryFont = "'Avenir', -apple-system, sans-serif"
-export const secondaryFont = "'Didot', -apple-system, serif"
+export const primaryFont = "'GaramondPro', -apple-system, sans-serif"
+export const secondaryFont = "'Futura', -apple-system, serif"
+
 export const normal = 'normal'
-export const medium = 700
-export const bold = 900
+export const medium = 500
+export const heavy = 500
+export const bold = 700
 
 export const bodyLarge = `
 	${ responsiveStyles('font-size', 24, 22, 20, 18) }
@@ -19,6 +21,7 @@ export const bodyLarge = `
 	text-transform: none;
 	font-weight: normal;
 `
+
 export const bodyMedium = `
 	${ responsiveStyles('font-size', 20, 18, 18, 16) }
 	line-height: 1.5em;
@@ -27,6 +30,7 @@ export const bodyMedium = `
 	text-transform: none;
 	font-weight: normal;
 `
+
 export const body = `
 	${ responsiveStyles('font-size', 18, 16, 16, 14) }
 	line-height: 1.5em;
@@ -35,6 +39,7 @@ export const body = `
 	text-transform: none;
 	font-weight: normal;
 `
+
 export const bodySmall = `
 	${ responsiveStyles('font-size', 16, 15, 14, 14) }
 	line-height: 1.4em;
@@ -53,9 +58,9 @@ export const bodyTiny = `
 `
 
 export const h1 = `
-	${ responsiveStyles('font-size', 72, 60, 46, 34) }
-	line-height: 1.15em;
-	font-family: ${ secondaryFont };
+	${ responsiveStyles('font-size', 72, 42, 42, 34) }
+	line-height: 1.2em;
+	font-family: ${ primaryFont };
 	font-weight: ${ normal };
 	letter-spacing: -.015em;
 	text-transform: none;
@@ -118,7 +123,6 @@ export const blockquote = `
 
 export const eyebrow = `
 	${ body }
-	font-weight: ${ bold };
 `
 
 export const smallCaps = `
@@ -127,14 +131,17 @@ export const smallCaps = `
 `
 
 export const buttonStyle = `
-	${ body }
-	font-weight: ${ medium };
+	font-family: ${ secondaryFont };
+	font-weight: ${ normal };
+	text-transform: uppercase;
 `
 
 export const navStyle = `
-	${ body }
-	${ responsiveStyles('font-size', 16, 15, 13, 13) }
-	font-weight: ${ medium };
+	font-family: ${ secondaryFont };
+	${ responsiveStyles('font-size', 13, 13, 10, 10) }
+	font-weight: ${ normal };
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
 `
 
 export const storyNotes = `

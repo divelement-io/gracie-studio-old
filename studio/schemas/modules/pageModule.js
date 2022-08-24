@@ -14,7 +14,13 @@ export default {
       type: 'slug',
       options: {
         source: 'content.main.title',
-        maxLength: 96
+        slugify: (input) =>
+          input
+            .toLowerCase()
+            //Remove spaces
+            .replace(/\s+/g, "-")
+            //Remove special characters
+            .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ""),
       },
       validation: Rule => Rule.required()
     },
