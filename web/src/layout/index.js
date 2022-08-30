@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/react'
 import globalStyles from 'src/styles/globalStyles'
 import PageTransition from 'src/components/PageTransition'
-import NewsletterPopup from 'src/components/NewsletterPopup'
 import ScrollListener from 'src/components/ScrollListener'
 import IntersectionObserverPolyfill from 'src/components/IntersectionObserverPolyfill'
 import AppProvider from 'src/state/AppState'
-// import ShopifyProvider from 'src/state/ShopifyState.js'
 import './reset.css'
 
 const Layout = ({ children, location }) => (
@@ -35,7 +33,6 @@ const Layout = ({ children, location }) => (
 									{children}
 								</PageTransition>
 							</ScrollListener>
-							<NewsletterPopup/>
 						</AppProvider>
 					</IntersectionObserverPolyfill>
 				</>

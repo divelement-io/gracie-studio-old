@@ -2,14 +2,15 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import Button from 'src/components/Button'
-import TextLink from 'src/components/TextLink'
+
 import ScrollEntrance from 'src/components/ScrollEntrance'
 import SanityRichText from 'src/components/SanityRichText'
 import { typography, mq } from 'src/styles'
-import { themes } from 'src/styles/themes'
-import { getSanityLink } from 'src/utils/format'
 import { AppContext } from 'src/state/AppState'
+import Actions from 'src/components/Actions'
+
+import { colors, util } from 'src/styles'
+
 
 const Wrapper = styled.div`
 	display: inline-block;
@@ -58,12 +59,13 @@ const TextContainer = styled(ScrollEntrance)`
 
 const Eyebrow = styled.p`
 	${ typography.eyebrow }
-	color: var(--main-color);
 	${ ({ hasText }) => hasText ? `
 		margin: 0 0 1em;
 	` : `
 		margin: 0;
 	` }
+	${ ({ theme }) => theme === 'transparent' ?  `
+	color: ${colors.white};` : `color: var(--light-text-color);` }
 `
 
 const Headline = styled.div`
@@ -91,17 +93,8 @@ const Text = styled.div`
 	}
 `
 
-const ActionWrapper = styled.div`
-	padding: 24px 10px 0;
-	display: inline-block;
-	vertical-align: middle;
-`
-
-const ButtonActions = styled.div`
-	margin-top: 8px;
-	text-align: ${ ({ alignment }) => alignment };
-	margin-left: -10px;
-	margin-right: -10px;
+const ActionsContainer = styled.div`
+	padding-top: 1.5rem;
 `
 
 const TextLockup = ({
@@ -137,7 +130,7 @@ const TextLockup = ({
 
 					{eyebrow && (
 						<div>
-							<Eyebrow className='eyebrow' hasText={headline || text} alignment={alignment}>{eyebrow}</Eyebrow>
+							<Eyebrow theme={theme} hasText={headline || text} alignment={alignment}>{eyebrow}</Eyebrow>
 						</div>
 					)}
 
@@ -180,79 +173,9 @@ const TextLockup = ({
 					{text && typeof text !== 'string' && !Array.isArray(text) &&
 						<Text textSize={textSize} alignment={alignment}>{text}</Text>
 					}
-
-					{actions && actions.length > 0 && (
-						<ButtonActions buttons={actions} alignment={alignment} className='actions'>
-							{actions.map((action, index) => {
-								if (action.title) {
-									let handleClick = () => { return null }
-
-
-									if (action._type === 'button') {
-										let actionTheme = 'default'
-										if (action.theme === 'primary') {
-											actionTheme = themes[theme]?.buttonTheme || 'default'
-										} else if (action.theme === 'secondary') {
-											actionTheme = themes[theme]?.buttonThemeSecondary || 'default'
-										}
-										if (action.type === 'newsletterSignup') {
-											return (
-												<ActionWrapper key={'button-' + index}>
-													<Button
-														setTheme={actionTheme}
-														onClick={() => toggleModal('newsletterSignup')}
-														title={action.title}
-														name={action.title}
-													>
-														{action.title}
-													</Button>
-												</ActionWrapper>
-											)
-										} else {
-											return (
-												<ActionWrapper key={'button-' + index} onClick={handleClick}>
-													<Button
-														target={action.newTab && '_blank'}
-														setTheme={actionTheme}
-														to={getSanityLink(action)}
-														external={action.type === 'externalLink' || action.type === 'fileLink'}
-														title={action.title}
-														name={action.title}
-													>
-														{action.title}
-													</Button>
-												</ActionWrapper>
-											)
-										}
-									} else if (action._type === 'link') {
-										return (
-											<ActionWrapper key={'link-' + index} onClick={handleClick}>
-												<TextLink
-													target={action.newTab && '_blank'}
-													to={getSanityLink(action)}
-													external={action.externalLink}
-													title={action.title}
-													name={action.title}
-													theme='mainColor'
-													size='body'
-												>
-													{action.title}
-												</TextLink>
-											</ActionWrapper>
-										)
-									} else {
-										return (
-											<ActionWrapper key={'custom-item-' + index}>
-												{action}
-											</ActionWrapper>
-										)
-									}
-								} else {
-									return null
-								}
-							})}
-						</ButtonActions>
-					)}
+					<ActionsContainer>
+						<Actions alignment={alignment} actions={actions} />
+					</ActionsContainer>
 				</TextContainer>
 			</div>
 		</Wrapper>

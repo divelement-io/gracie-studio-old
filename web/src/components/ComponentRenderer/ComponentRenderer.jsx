@@ -5,6 +5,9 @@ import FiftyFifty from 'src/components/FiftyFifty'
 import Columns from 'src/components/Columns'
 import TwoColumnText from 'src/components/TwoColumnText'
 import Slideshow from 'src/components/Slideshow'
+import WallpaperGrid from 'src/components/WallpaperGrid'
+import CollectionList from 'src/components/CollectionList'
+
 // plopImportModules
 
 const componentMap = {
@@ -13,7 +16,8 @@ const componentMap = {
   fiftyFifty: FiftyFifty,
   columns: Columns,
   twoColumnText: TwoColumnText,
-  slideshow: Slideshow
+  slideshow: Slideshow,
+  collectionList: CollectionList
 }
 
 const ComponentRenderer = ({ item, prevTheme, nextTheme, index, isLastSection, isFirstSection }) => {
@@ -25,7 +29,10 @@ const ComponentRenderer = ({ item, prevTheme, nextTheme, index, isLastSection, i
     // return false
     return (<div><h3>TODO: {item?._type}</h3></div>)
   }
-  console.log(item)
+
+  // console.log(item._type)
+  // console.table(item)
+
   return Component ? (
     <Component
       {...item}

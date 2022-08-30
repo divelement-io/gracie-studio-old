@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  fragment Page on SanityPage {
+  fragment Wallpaper on SanityWallpaper {
     _type
     content {
       main {
@@ -13,22 +13,8 @@ export const query = graphql`
           ...TextSection
           ...WideMedia
           ...FiftyFifty
-          ...CollectionList
-          ...WallpaperGrid
+          ...TwoColumnText
         }
-       # instagram {
-       #   items {
-       #     _key
-       #     asset {
-       #       gatsbyImageData(layout: CONSTRAINED, width: 400, height: 400, aspectRatio: 1)
-       #     }
-       #     title
-       #     description
-       #     link {
-       #       ...Link
-       #     }
-       #   }
-       # }
       }
       meta {
         metaDescription

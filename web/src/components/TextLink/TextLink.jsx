@@ -24,7 +24,7 @@ const StyledLink = styled.div`
 		top: 100%;
 		left: 0;
 		width: 100%;
-		height: 2px;
+		height: 1px;
 		background: var(--light-text-color);
 		opacity: .2;
 		z-index: 1;
@@ -36,7 +36,7 @@ const StyledLink = styled.div`
 		top: 100%;
 		left: 0;
 		width: 100%;
-		height: 2px;
+		height: 1px;
 		background: ${ ({ theme }) => colors[theme] };
 		transform: scaleX(0);
 		transform-origin: right center;

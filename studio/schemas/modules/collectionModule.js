@@ -42,14 +42,7 @@ export default {
     {
       name: 'attachment',
       title: 'Attachment',
-      type: 'file',
-      fields: [
-        {
-          name: 'filename',
-          type: 'string',
-          title: 'Display Name'
-        },
-      ],
+      type: 'inlineFile',
       options: {
         accept: 'application/pdf'
       }
@@ -59,7 +52,9 @@ export default {
       title: 'Wallpapers',
       type: 'array',
       of: [
-        { type: 'wallpaper' }
+        { type: 'reference',
+          to: [{type: 'wallpaper'}]
+        }
       ]
     },
     {
@@ -67,7 +62,9 @@ export default {
       title: 'Sub Collections',
       type: 'array',
       of: [
-        { type: 'collection' }
+        { type: 'reference',
+          to: [{type: 'collection'}]
+        }
       ]
     },
     {
@@ -75,7 +72,9 @@ export default {
       title: 'Related Collections',
       type: 'array',
       of: [
-        { type: 'collection' }
+        { type: 'reference',
+          to: [{type: 'collection'}]
+        }
       ]
     }
   ]

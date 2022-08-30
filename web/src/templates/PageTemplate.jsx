@@ -14,7 +14,7 @@ const Page = ({ data }) => {
   let modules = page?.modules
     // Filter out hidden modules
     modules = modules?.filter(module => !module?.hidden)
-  const hasAtf = (modules[0]?._type === 'wideMedia' && modules[0]?.width === 'fullWidth') || modules[0]?.theme === 'navy'
+  const hasAtf = (modules[0]?._type === 'wideMedia' && modules[0]?.width === 'fullWidth') || modules[0]?.theme === 'darkGrey'
 
   return (
     <>

@@ -21,6 +21,7 @@ import theme from './modules/theme'
 import textLockup from './modules/textLockup'
 import media from './modules/media'
 import inlineImage from './modules/inlineImage'
+import inlineFile from './modules/inlineFile'
 import actions from './modules/actions'
 import link from './modules/link'
 import navLink from './modules/navLink'
@@ -84,6 +85,7 @@ export default createSchema({
     listItem,
     media,
     inlineImage,
+    inlineFile,
     // Modules
     textSection,
     twoColumnText,

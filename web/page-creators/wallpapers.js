@@ -3,7 +3,7 @@ const path = require('path')
 const createPages = (graphql, createPage) => new Promise((resolve, reject) => {
   graphql(`
     {
-      allSanityPage {
+      allSanityWallpaper {
         edges {
           node {
             id
@@ -23,16 +23,16 @@ const createPages = (graphql, createPage) => new Promise((resolve, reject) => {
       reject(result.errors)
     }
 
-    const pageTemplate = path.resolve('./src/templates/PageTemplate.jsx')
+    const wallpaperTemplate = path.resolve('./src/templates/WallpaperTemplate.jsx')
 
-    result.data.allSanityPage.edges
+    result.data.allSanityWallpaper.edges
       .forEach(edge => {
-        const slug = edge?.node?.content?.main?.slug?.current === 'home' ? '' :  edge?.node?.content?.main?.slug?.current
+        const slug = edge?.node?.content?.main?.slug?.current
 
         if (slug) {
           createPage({
-            path: slug,
-            component: pageTemplate,
+            path: `wallpaper/${slug}`,
+            component: wallpaperTemplate,
             context: {
               id: edge.node.id
             },

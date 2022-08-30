@@ -1,9 +1,10 @@
 const path = require('path')
 
+
 const createPages = (graphql, createPage) => new Promise((resolve, reject) => {
   graphql(`
     {
-      allSanityPage {
+      allSanityCollection {
         edges {
           node {
             id
@@ -23,16 +24,16 @@ const createPages = (graphql, createPage) => new Promise((resolve, reject) => {
       reject(result.errors)
     }
 
-    const pageTemplate = path.resolve('./src/templates/PageTemplate.jsx')
+    const collectionTemplate = path.resolve('./src/templates/CollectionTemplate.jsx')
 
-    result.data.allSanityPage.edges
+    result.data.allSanityCollection.edges
       .forEach(edge => {
-        const slug = edge?.node?.content?.main?.slug?.current === 'home' ? '' :  edge?.node?.content?.main?.slug?.current
+        const slug = edge?.node?.content?.main?.slug?.current
 
         if (slug) {
           createPage({
-            path: slug,
-            component: pageTemplate,
+            path: `collection/${slug}`,
+            component: collectionTemplate,
             context: {
               id: edge.node.id
             },

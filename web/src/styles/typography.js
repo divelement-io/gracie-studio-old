@@ -9,12 +9,13 @@ export const primaryFont = "'GaramondPro', -apple-system, sans-serif"
 export const secondaryFont = "'Futura', -apple-system, serif"
 
 export const normal = 'normal'
-export const medium = 500
+export const light = 300
+export const medium = 400
 export const heavy = 500
-export const bold = 700
+export const bold = 600
 
 export const bodyLarge = `
-	${ responsiveStyles('font-size', 24, 22, 20, 18) }
+	${ responsiveStyles('font-size', 36, 32, 32, 30) }
 	line-height: 1.5em;
 	font-family: ${ primaryFont };
 	letter-spacing: 0;
@@ -23,7 +24,7 @@ export const bodyLarge = `
 `
 
 export const bodyMedium = `
-	${ responsiveStyles('font-size', 20, 18, 18, 16) }
+	${ responsiveStyles('font-size', 22, 12, 18, 18) }
 	line-height: 1.5em;
 	font-family: ${ primaryFont };
 	letter-spacing: 0;
@@ -41,7 +42,7 @@ export const body = `
 `
 
 export const bodySmall = `
-	${ responsiveStyles('font-size', 16, 15, 14, 14) }
+	${ responsiveStyles('font-size', 14, 14, 12, 12) }
 	line-height: 1.4em;
 	font-family: ${ primaryFont };
 	letter-spacing: 0;
@@ -49,7 +50,7 @@ export const bodySmall = `
 	font-weight: normal;
 `
 export const bodyTiny = `
-	${ responsiveStyles('font-size', 14, 13, 12, 12) }
+	${ responsiveStyles('font-size', 12, 12, 10, 10) }
 	line-height: 1.5em;
 	font-family: ${ primaryFont };
 	letter-spacing: 0;
@@ -58,82 +59,85 @@ export const bodyTiny = `
 `
 
 export const h1 = `
-	${ responsiveStyles('font-size', 72, 42, 42, 34) }
-	line-height: 1.2em;
+	${ responsiveStyles('font-size', 72, 48, 48, 42) }
 	font-family: ${ primaryFont };
 	font-weight: ${ normal };
-	letter-spacing: -.015em;
+	line-height: 1.2em;
+	letter-spacing: inherit;
 	text-transform: none;
 	color: var(--text-color);
 `
 
 export const h2 = `
-	${ responsiveStyles('font-size', 48, 36, 36, 30) }
-	line-height: 1.25em;
-	font-family: ${ secondaryFont };
-	font-weight: ${ normal };
-	letter-spacing: -.015em;
+	${ responsiveStyles('font-size', 36, 30, 30, 28) };
+	font-family: ${ primaryFont };
+	font-weight: ${ light };
+	line-height: 1.2em;
+	letter-spacing: inherit;
 	text-transform: none;
 	color: var(--text-color);
 `
 
 export const h3 = `
-	${ responsiveStyles('font-size', 40, 26, 26, 23) }
-	line-height: 1.25em;
-	font-family: ${ secondaryFont };
-	font-weight: ${ normal };
-	letter-spacing: 0;
+	${ responsiveStyles('font-size', 36, 24, 24, 18) };
+	font-family: ${ primaryFont };
+	font-weight: ${ light };
+	line-height: 1.333em;
+	letter-spacing: inherit;
 	text-transform: none;
 	color: var(--text-color);
 `
 
 export const h4 = `
-	${ responsiveStyles('font-size', 28, 22, 22, 20) }
-	line-height: 1.3em;
+	${ responsiveStyles('font-size', 24, 18, 18, 16) };
 	font-family: ${ secondaryFont };
-	font-weight: ${ normal };
-	letter-spacing: 0;
-	text-transform: none;
+	font-weight: ${ medium };
+	line-height: 1.333em;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
 	color: var(--text-color);
 `
 
 export const h5 = `
-	${ responsiveStyles('font-size', 18, 16, 16, 16) }
-	font-family: ${ primaryFont };
-	font-weight: ${ bold };
+	${ responsiveStyles('font-size', 16, 16, 14, 14) };
+	font-family: ${ secondaryFont };
+	font-weight: ${ medium };
 	line-height: 1.25em;
-	letter-spacing: 0;
-	text-transform: none;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
 	color: var(--text-color);
 `
 export const h6 = `
-	${ responsiveStyles('font-size', 15, 13, 13, 13) }
-	font-family: ${ primaryFont };
-	font-weight: ${ bold };
-	line-height: 1em;
+	${ responsiveStyles('font-size', 12, 12, 10, 10) }
+	    text-transform: uppercase;
+	font-family: ${ secondaryFont };
+	font-weight: ${ medium };
+	line-height: 1.4em;
+	letter-spacing: 0.15em;
 	color: var(--text-color);
 `
 
 export const blockquote = `
-	${ h4 }
+	${ h3 }
 	font-style: normal;
 	border-left: 2px solid var(--hr-color);
 	padding-left: .5em;
 `
 
 export const eyebrow = `
-	${ body }
+	${ h6 }
 `
 
 export const smallCaps = `
 	${ h6 }
-	${ responsiveStyles('font-size', 14, 13, 12, 12) }
+	${ responsiveStyles('font-size', 14, 14, 12, 12) }
 `
 
 export const buttonStyle = `
 	font-family: ${ secondaryFont };
-	font-weight: ${ normal };
+	font-weight: ${ medium };
 	text-transform: uppercase;
+	letter-spacing: 0.15em;
 `
 
 export const navStyle = `

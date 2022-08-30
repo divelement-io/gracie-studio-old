@@ -12,14 +12,14 @@ export const slugify = (text, separator = '-') => {
 		.replace(/\s+/g, separator)
 }
 
-export const getSlugLink = (link, prefix) => {
-	const currentLink = link
+export const getSlugLink = (slug, prefix) => {
+	const currentLink = slug?.current
 	if (currentLink && prefix) {
-		return '/' + prefix + '/' + currentLink
+		return `${prefix.startsWith('/') ? '' : '/'}` + prefix + `${currentLink.startsWith('/') ? '' : '/'}` + currentLink
 	} else if (currentLink === 'home') {
 		return '/'
 	} else if (currentLink) {
-		return '/' + currentLink
+		return currentLink
 	}
 	return '/'
 }
@@ -57,25 +57,18 @@ export const truncate = (text, limit, append) => {
   return parts.join(' ') + append
 }
 
+
 export const getSanityLink = item => {
-  const linkSlug = item?.link?.content?.main?.slug?.current
-  const pageParent = item?.link?.content?.main?.parentPage?.content?.main?.slug?.current
+  const linkSlug = item?.link?.content?.main?.slug
+  const pageParent = item?.link?.content?.main?.parentPage?.content?.main?.slug
   let renderedLink = getSlugLink(linkSlug, pageParent)
   if (item?.type === 'externalLink') {
     renderedLink = item.externalLink
   } else if (item?.type === 'postLink') {
     const dateSlug = item.postLink.publishedAt.replaceAll('-', '/')
-    renderedLink = getSlugLink(item?.postLink?.slug?.current, dateSlug)
+    renderedLink = getSlugLink(item?.postLink?.slug, dateSlug)
   } else if (item?.type === 'fileLink') {
     renderedLink = item?.file?.asset?.url
-  } else if (!linkSlug && item?.link?.school?.title) {
-    const schoolTypes = {
-      upperSchool: 'high-schools/',
-      middleSchool: 'middle-schools/',
-      lowerSchool: 'upper-schools/'
-    }
-    // renderedLink = 'test'
-    renderedLink = '/' + schoolTypes[item.link._type] + slugify(item?.link?.school?.title)
   }
   return renderedLink
 }

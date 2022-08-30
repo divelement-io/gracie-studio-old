@@ -14,8 +14,8 @@ const ThemeWrapper = styled.div`
 		background-color: var(--bg-color);
 		color: var(--text-color);
 		*::selection {
-	    background: ${ rgba(themes[setTheme].hoverColor, 0.9) };
-	    color: var(--bg-color);
+	    background: ${ themes[setTheme].selectColor || rgba(themes[setTheme].hoverColor, 0.9) };
+	    color: ${themes[setTheme].bgColor};
 	  }
 	  p a {
 	  	border-color: ${ rgba(themes[setTheme].color, 0.25) };

@@ -58,7 +58,7 @@ const ScrollEntrance = ({ children, className, transform, speed, as, delay = '10
 }
 
 ScrollEntrance.defaultProps = {
-	transform: 'translate3d(0, 40px, 0)',
+	transform: 'translate3d(0, 20px, 0)',
 	delay: 0,
 	timing: 'cubic-bezier(0.44, 0.24, 0.16, 1.00)',
 	speed: 650,

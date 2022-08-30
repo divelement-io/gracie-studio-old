@@ -219,7 +219,7 @@ const CustomForm = ({
 					type='submit'
 					onClick={submit}
 					shape='block'
-					setTheme='mainColor'
+					setTheme='default'
 					icon={renderIcon(status)}
 					iconPosition='right'
 					disabled={!validateEmail(formData?.EMAIL) || !formData?.FNAME || !formData?.LNAME || success || loading}
@@ -233,7 +233,7 @@ const CustomForm = ({
 	)
 }
 
-class MailchimpSignup extends Component {
+class Newsletter extends Component {
 	render () {
 		return (
 			<MailchimpSubscribe
@@ -255,4 +255,4 @@ class MailchimpSignup extends Component {
 	}
 }
 
-export default MailchimpSignup
+export default Newsletter

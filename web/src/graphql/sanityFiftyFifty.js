@@ -11,6 +11,10 @@ export const query = graphql`
     textAlignment
     verticalAlignment
     hidden
+    text {
+      eyebrow
+      _rawText(resolveReferences: {maxDepth: 10})
+    }
     media {
       ...Media
     }

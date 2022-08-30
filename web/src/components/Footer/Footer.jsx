@@ -12,6 +12,9 @@ import { mq, util, typography, colors, animations } from 'src/styles'
 import { getSanityLink } from 'src/utils/format'
 import { AppContext } from 'src/state/AppState'
 
+import Newsletter from 'src/components/Newsletter'
+
+
 const Wrapper = styled(ThemeSelector)`
 	position: relative;
 	z-index: 2;
@@ -46,7 +49,7 @@ const FooterBottom = styled(ThemeSelector)`
 
 const ListHeader = styled.div`
 	display: block;
-	${ typography.h3 }
+	${ typography.h6 }
 	margin: 0 0 .5em;
 `
 
@@ -92,7 +95,6 @@ const LinkList = styled.ul`
 `
 
 const SiteCredit = styled.div`
-	text-align: right;
 	p {
 		margin: 0;
 		max-width: none;
@@ -106,15 +108,16 @@ const SiteCredit = styled.div`
 `
 
 const Footer = () => {
-	const { footerMenus, sanitySiteSettings } = useStaticQuery(
+	const { footerMenus: footerMenu, sanitySiteSettings } = useStaticQuery(
 		graphql`
 			query {
 				sanitySiteSettings {
 					title
 				}
-				footerMenus: sanityMenus(slug: {current: {eq: "footer-columns"}}) {
+				footerMenus: sanityMenus(slug: {current: {eq: "footer-navigation"}}) {
 					_id
 					_key
+					title
 					items {
 						_key
 						itemLink {
@@ -129,112 +132,66 @@ const Footer = () => {
 	const { title, contactInfo } = { ...sanitySiteSettings }
 
 	return (
-		<Wrapper setTheme="navy">
+		<Wrapper setTheme="lightGrey">
 			<Section>
 				<Container>
-					<Grid small='[1]' medium='[1]' extraLarge='[2] [6]' rowGap={['7vw', '75px']} vAlign='top'>
-						<div>
-							<LogoLink to='/'>
-								<FooterLogo />
-							</LogoLink>
-						</div>
+
 						<Grid
-							small='[1]'
-							medium='[1] [1]'
-							large='[1] [1] [1] [1]'
+							small='[12]'
+							medium='[8] [4]'
+							large='[5] 3 [4]'
 							rowGap='7vw'
 							vAlign='top'
 						>
+
+
 							<div>
-								<ListHeader>Contact</ListHeader>
+								<ListHeader>{footerMenu.title}</ListHeader>
 								<LinkList spaced>
-									{contactInfo?.email && (
-										<li><Link to={contactInfo?.email} external title='Email us'>{contactInfo?.email}</Link></li>
-									)}
+									{ footerMenu?.items?.map((item, index) => {
+										const { itemLink } = item
+										return itemLink.title && (
+											<li key={item._key}>
+													<Link
+														target={itemLink.newTab && '_blank'}
+														external={itemLink.type === 'externalLink' || itemLink.type === 'fileLink'}
+														to={getSanityLink(item)}
+														key={itemLink._key}
+													>
+														{itemLink.title}
+													</Link>
+											</li>
+										)})
+									}
+								</LinkList>
+
+							</div>
+
+							<div>
+								<ListHeader>Stay Updated</ListHeader>
+								<LinkList spaced>
+									<Newsletter />
+								</LinkList>
+								<ListHeader>Find Us On</ListHeader>
+								<LinkList spaced>
 									<li>
-										<Link
-											as={contactInfo?.address?.mapLink ? Link : 'p'}
-											title='directions'
-											to={contactInfo?.address?.mapLink}
-											external
-											target='_blank'
-										>
-											{contactInfo?.address?.streetAddress}<br/>
-											{contactInfo?.address?.city},
-											{contactInfo?.address?.state},
-											{contactInfo?.address?.zip}
+										<Link>
+											Instagram
 										</Link>
 									</li>
-									{contactInfo?.phone && (
-										<li>Tel. <Link to={'tel:' + contactInfo?.phone} external title='Call us'>{contactInfo?.phone}</Link></li>
-									)}
 								</LinkList>
 							</div>
-							{footerMenus?.items?.length > 0 && footerMenus.items.map((item, index) => {
-								const { itemLink } = item
-								if (!itemLink.title) {
-									return false
-								}
-								return (
-									<div key={item._key}>
-										<ListHeader
-											target={itemLink.newTab && '_blank'}
-											external={itemLink.type === 'externalLink'}
-											to={getSanityLink(itemLink)}
-											key={itemLink._key}
-											as={Link}
-										>
-											{itemLink.title}
-										</ListHeader>
-										{item.sublinks && item?.sublinks?.length > 0 && (
-											<LinkList>
-												{item.sublinks.map((dropdownLink, index) => (
-													<li key={dropdownLink._key}>
-														<Link
-															target={dropdownLink.newTab && '_blank'}
-															external={dropdownLink.type === 'externalLink' || dropdownLink.type === 'fileLink'}
-															to={getSanityLink(dropdownLink)}
-															key={dropdownLink._key}
-														>
-															{dropdownLink.title}
-														</Link>
-													</li>
-												))}
-											</LinkList>
-										)}
-										{index + 1 === footerMenus?.items?.length && (
-											<TextLink
-												onClick={() => toggleModal('newsletterSignup')}
-												setTheme='mainColor'
-												as='button'
-												css={css`
-													margin-top: 1.5em;
-													${ typography.bodyMedium }
-													${ mq.mediumAndUp } {
-														${ typography.body }
-													}
-													&:before {
-														background: ${ colors.mainColor };
-														opacity: 1;
-													}
-												`}
-											>
-												Sign up for updates
-											</TextLink>
-										)}
-									</div>
-								)
-							})}
 						</Grid>
-					</Grid>
+
 				</Container>
 			</Section>
-			<FooterBottom setTheme="navy">
+
+			<FooterBottom setTheme="lightGrey">
 				<Container>
 					<Grid
 						small="[7] [5]"
 						medium="[8] [4]"
-						large="[8] [4]"
+						large="[5] 3 [4]"
 						vAlign="center"
 					>
 						<Copyright>
@@ -242,6 +199,14 @@ const Footer = () => {
 						</Copyright>
 						<SiteCredit><p className="tiny"><Link to="https://gordilsandwillis.com/" target="_blank" external>Site Credit</Link></p></SiteCredit>
 					</Grid>
+				</Container>
+			</FooterBottom>
+
+			<FooterBottom>
+				<Container>
+					<LogoLink to='/'>
+						<FooterLogo />
+					</LogoLink>
 				</Container>
 			</FooterBottom>
 		</Wrapper>

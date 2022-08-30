@@ -44,7 +44,7 @@ const globalStyles = `
     --site-max-width: 1500px;
     --site-margins: 4.5rem;
     --site-mobile-margins: 2.25rem;
-    --vertical-spacing: clamp(40px, ${ 100 / 14 }vw, 140px);
+    --vertical-spacing: clamp(40px, ${ 100 / 12 }vw, 140px);
     --site-gutters: 2.25rem;
 
     --site-wide-gutters: 4.75rem;
@@ -167,15 +167,15 @@ const globalStyles = `
   h5, .h5 {
     ${ typography.h5 }
     ${ responsiveStyles('margin-top', 24, 16, 16, 8) }
+    ${ responsiveStyles('margin-bottom', 24, 16, 16, 8) }
     strong {
       font-weight: normal;
     }
-    margin-bottom: 0;
   }
 
   h6, .h6 {
     ${ typography.h6 }
-    margin-top: 0;
+    ${ responsiveStyles('margin-top', 24, 16, 16, 8) }
     ${ responsiveStyles('margin-bottom', 24, 16, 16, 8) }
   }
 
@@ -248,12 +248,6 @@ const globalStyles = `
   }
   
   ${ slick }
-
-  .team-member-modal.ReactModal__Overlay {
-    ${ mq.smallAndBelow } {
-      padding: 0 !important;
-    }
-  }
 
   .linen {
     color: ${ colors.linen };

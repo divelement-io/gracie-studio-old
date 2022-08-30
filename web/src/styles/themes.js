@@ -9,7 +9,15 @@ export const themes = {
 		background: colors.bgColor,
 		hoverColor: colors.mainColor,
 		buttonTheme: 'default',
-		buttonThemeSecondary: 'textColor'
+		buttonThemeSecondary: 'defaultOutlined'
+	},
+	offWhite: {
+		color: colors.textColor,
+		lightColor: colors.lightTextColor,
+		background: colors.offWhite,
+		hoverColor: colors.mainColor,
+		buttonTheme: 'default',
+		buttonThemeSecondary: 'defaultOutlined'
 	},
 	lightGrey: {
 		color: colors.textColor,
@@ -17,17 +25,35 @@ export const themes = {
 		background: colors.lightGrey,
 		hoverColor: colors.mainColor,
 		buttonTheme: 'default',
-		buttonThemeSecondary: 'textColor'
+		buttonThemeSecondary: 'defaultOutlined'
 	},
-	navy: {
+	darkGrey: {
 		color: colors.bgColor,
 		lightColor: tint(0.8, colors.textColor),
-		background: colors.textColor,
-		hoverColor: colors.mainColor,
+		background: colors.mainColor,
+		hoverColor: colors.offWhite,
 		buttonTheme: 'white',
 		buttonThemeSecondary: 'default',
 		hrColor: 'rgba(255, 255, 255, .3)'
-	}
+	},
+	transparent: {
+		color: colors.bgColor,
+		lightColor: tint(0.8, colors.textColor),
+		background: 'transparent',
+		hoverColor: colors.offWhite,
+		selectColor: colors.textColor,
+		buttonTheme: 'whiteOutlined',
+		buttonThemeSecondary: 'whiteOutlined',
+		hrColor: 'rgba(255, 255, 255, .3)'
+	},
+	linen: {
+		color: colors.textColor,
+		lightColor: colors.lightTextColor,
+		background: colors.linen,
+		hoverColor: colors.mainColor,
+		buttonTheme: 'default',
+		buttonThemeSecondary: 'defaultOutlined'
+	},
 }
 
 // Button Themes
@@ -36,7 +62,7 @@ export const buttonThemes = {
 		color: colors.bgColor,
 		background: colors.mainColor,
 		hoverColor: colors.bgColor,
-		hoverBackground: lighten(0.07, colors.mainColor)
+		hoverBackground: darken(0.1, colors.mainColor)
 	},
 	transparent: {
 		color: colors.lightTextColor,
@@ -44,48 +70,51 @@ export const buttonThemes = {
 		hoverColor: colors.textColor,
 		hoverBackground: 'transparent'
 	},
-	currentcolor: {
-		color: colors.textColor,
-		background: 'currentcolor',
-		hoverColor: 'currentcolor',
-		hoverBackground: 'currentcolor'
-	},
-	currentcolorOutlined: {
-		color: 'currentcolor',
+	whiteOutlined: {
+		color: colors.bgColor,
+		hoverColor: colors.mainColor,
 		background: 'transparent',
-		hoverColor: colors.textColor,
-		hoverBackground: 'currentcolor',
-		borderColor: 'currentcolor'
+		hoverBackground: colors.bgColor,
+		borderColor: colors.bgColor,
+		hoverBorder: colors.bgColor
+	},
+	defaultOutlined: {
+		color: colors.textColor,
+		hoverColor: colors.bgColor,
+		background: 'transparent',
+		hoverBackground: colors.textColor,
+		borderColor: colors.textColor,
+		hoverBorder: colors.textColor
 	},
 	black: {
 		color: colors.bgColor,
+		hoverColor: colors.bgColor,
 		background: colors.black,
-		hoverColor: colors.mainColor,
-		hoverBackground: darken(0.07, colors.mainColor)
+		hoverBackground: lighten(0.1, colors.black)
 	},
 	white: {
 		color: colors.textColor,
 		background: colors.white,
-		hoverColor: colors.white,
-		hoverBackground: colors.mainColor
+		hoverColor: colors.textColor,
+		hoverBackground: darken(0.07, colors.white)
 	},
 	lightGrey: {
 		color: colors.textColor,
 		background: colors.lightGrey,
 		hoverColor: colors.textColor,
-		hoverBackground: darken(0.07, colors.lightGrey)
+		hoverBackground: lighten(0.07, colors.lightGrey)
 	},
 	mainColor: {
 		color: colors.bgColor,
 		background: colors.mainColor,
 		hoverColor: colors.bgColor,
-		hoverBackground: lighten(0.07, colors.mainColor)
+		hoverBackground: lighten(0.1, colors.mainColor)
 	},
 	textColor: {
 		color: colors.bgColor,
 		background: colors.textColor,
 		hoverColor: colors.bgColor,
-		hoverBackground: colors.mainColor
+		hoverBackground: lighten(0.1, colors.textColor)
 	}
 }
 

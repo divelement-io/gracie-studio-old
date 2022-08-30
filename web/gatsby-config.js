@@ -23,6 +23,12 @@ module.exports = {
 			},
 		},
 		{
+	    resolve: `gatsby-source-instagram`,
+	    options: {
+	      username: `graciestudio`,
+	    },
+	  },
+		{
 			resolve: 'gatsby-plugin-layout',
 			options: {
 				component: require.resolve('./src/layout/index.js'),

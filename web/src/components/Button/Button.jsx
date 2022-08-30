@@ -9,9 +9,11 @@ import { MdCheck, MdClose } from 'react-icons/md'
 import { baseBorderRadius, uiElementSizes, responsiveUiSizes } from 'src/styles/globals'
 import Link from 'src/components/Link'
 
+console.log('buttonThemes', themes)
+
 const buttonSettings = {
 	radius: baseBorderRadius,
-	border: '2px solid',
+	border: '1px solid',
 	transitionSpeed: animations.mediumSpeed,
 	verticalOffset: '0px'
 }
@@ -31,7 +33,15 @@ const getState = (loading, error, success, disabled) => {
 	return buttonState
 }
 
-const setButtonTheme = (theme, state) => `
+const setButtonTheme = (theme, state) => {
+
+if (!themes[theme]) {
+	console.log('wtf no theme')
+	console.log(theme)
+	return false
+}
+return `
+
 	color: ${ themes[theme].color };
 	background: ${ themes[theme].background };
 	${ themes[theme].shadow ? `
@@ -46,8 +56,8 @@ const setButtonTheme = (theme, state) => `
 		${ !state ? `
 			color: ${ themes[theme].hoverColor };
 			background: ${ themes[theme].hoverBackground };
-			${ themes[theme].borderHoverColor ? `
-				border-color: ${ themes[theme].borderHoverColor };
+			${ themes[theme].hoverBorder ? `
+				border-color: ${ themes[theme].hoverBorder };
 			` : `
 				border-color: ${ themes[theme].hoverBackground };
 			` }
@@ -57,6 +67,7 @@ const setButtonTheme = (theme, state) => `
 		` : '' }
 	}
 `
+}
 
 const DisabledButtonStyles = () => `
 	&[disabled],
@@ -102,7 +113,7 @@ export const ButtonStyles = (state, shape, size, theme) => (`
 	text-transform: none;
 	letter-spacing: 0;
 	border-radius: ${ buttonSettings.radius }px;
-	${ util.responsiveStyles('font-size', 20, 16, 15, 13) }
+	${ util.responsiveStyles('font-size', 16, 14, 12, 12) }
 	text-align: center;
 	${ typography.buttonStyle }
 	line-height: 1em;
@@ -148,7 +159,7 @@ export const ButtonStyles = (state, shape, size, theme) => (`
 	${ shape && shape.includes('circle') ? 'border-radius: 50%;' : '' }
 
 	// Button Themes
-	${ setButtonTheme(theme, state) }
+	${ setButtonTheme(theme || 'default', state) }
 	${ state === 'disabled' ? `${ DisabledButtonStyles() }` : '' }
 
 	// Button Size Tweaks
@@ -193,7 +204,7 @@ const Button = ({
 	disabled,
 	onClick,
 	setTheme,
-	className,
+	className = '',
 	shape,
 	size,
 	title,
@@ -203,6 +214,7 @@ const Button = ({
 	label,
 	type
 }) => {
+
 	const renderIcon = (icon, position, shape, size) => {
 		let renderedIcon = false
 		if (typeof icon === 'string') {
@@ -212,8 +224,6 @@ const Button = ({
 		}
 		return renderedIcon
 	}
-
-	console.log(setTheme)
 
 	const renderButtonContent = () => {
 		if (loading) {

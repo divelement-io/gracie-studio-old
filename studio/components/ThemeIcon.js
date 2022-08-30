@@ -5,13 +5,24 @@ const ThemeIcon = ({ theme }) => {
 		return false
 	}
 
+
+
 	return (
 		<div
 			style={{ 
 				width: '40px',
 				height: '40px',
 				margin: '2px',
-				background: theme[1]?.background || '#e4e8ed',
+				background: (() => {
+					if (theme[1]?.background === 'transparent') {
+						return 'blue'
+					} else if (theme[1]?.background) {
+						return theme[1]?.background
+					} else {
+						return '#e4e8ed'
+					}
+
+				})(),
 				color: theme[1]?.color || 'currentcolor',
 				display: 'flex',
 				alignItems: 'center',

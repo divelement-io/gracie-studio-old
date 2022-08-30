@@ -46,7 +46,7 @@ export const Serializer = {
     block (props) {
       switch (props.node.style) {
         case 'h1':
-          return <h1 className={getClassName('h1', props.node.firstItem, props.node.lastItem)}>{renderLigatures(props.children)}</h1>
+          return <h2 className={getClassName('h1', props.node.firstItem, props.node.lastItem)}>{renderLigatures(props.children)}</h2>
 
         case 'h2':
           return <h2 className={getClassName('h2', props.node.firstItem, props.node.lastItem)}>{renderLigatures(props.children)}</h2>
@@ -105,7 +105,7 @@ export const Serializer = {
     button: ({ node }) => {
       let setTheme = 'default'
       if (node.theme === 'secondary') {
-        setTheme = 'navy'
+        setTheme = 'defaultOutlined'
       }
       return (
         <div className='embeded-content'>

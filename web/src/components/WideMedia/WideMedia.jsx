@@ -254,8 +254,6 @@ const WideMedia = ({
     height = 'auto'
   }
 
-  console.log(actions)
-
   const { toggleModal } = useContext(AppContext)
 
   const fullWidth = width === 'fullWidth'
@@ -333,7 +331,7 @@ const WideMedia = ({
                     </PlayButtonWrapper>
                   )}
                   {hasOverlay && (
-                    <OverlaySection isFirstSection={isFirstSection} setTheme='navy'>
+                    <OverlaySection isFirstSection={isFirstSection} setTheme='darkGrey'>
                       <Container>
                         <Grid small='[1]' {...overlayGridSettings}>
                           <div style={{ maxWidth: '35rem', margin: 'auto'}}>
@@ -344,7 +342,7 @@ const WideMedia = ({
                               textSize={paragraphSize}
                               actions={actions}
                               alignment={alignment}
-                              theme='navy'
+                              theme='transparent'
                               transitionIn={!isFirstSection}
                             />
                           </div>
