@@ -7,8 +7,6 @@ import Media from 'src/components/Media'
 import Grid, { Container } from 'src/components/Grid'
 import { colors, animations, mq, util } from 'src/styles'
 import TextLockup from 'src/components/TextLockup'
-import Video from 'src/components/Video'
-import Modal from 'src/components/Modal'
 import Button from 'src/components/Button'
 import { AppContext } from 'src/state/AppState'
 import { headerHeight } from 'src/components/Header'
@@ -130,61 +128,6 @@ const OverlaySection = styled(Section)`
   ` }
 `
 
-const PlayButtonWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: var(--site-margins);
-  // background: #ccc;
-  padding-left: var(--site-margins);
-  ${ ({ isFirstSection }) => !isFirstSection ? `
-    top: var(--site-margins);
-  ` : '' }
-`
-
-const PlayButton = styled(Button)`
-  position: sticky;
-  padding-left: 1em;
-  padding-right: 1.5em;
-  background: rgba(0, 0, 0, .6);
-  border-color: transparent;
-  ${ util.responsiveStyles('top', 80 + 40, 70 + 40, 66 + 30, 60 + 24) }
-  &:hover {
-    background: #fff;
-    color: ${ colors.textColor };
-    border-color: transparent;
-  }
-`
-
-const VideoModal = styled(Modal)`
-  .close-button {
-    background: rgba(0, 0, 0, .6);
-    top: 10px;
-    right: 10px;
-    .icon {
-      font-size: 24px;
-      color: ${ colors.white };
-    }
-    &:hover {
-      transform: none;
-      background: ${ colors.mainColor };
-    }
-  }
-`
-
-const ModalContent = styled.div`
-  width: calc(100vw - 40px);
-  max-width: 1200px;
-  video {
-    border-radius: var(--card-border-radius);
-  }
-  ${ mq.largeAndUp } {
-    width: 80vw;
-  }
-  video {
-    display: block;
-  }
-`
-
 function getHorizontalPlacementGridValues ({ fullWidth, overlayPlacementHorizontal }) {
   if (!fullWidth) {
     return {
@@ -242,8 +185,7 @@ const WideMedia = ({
   overlayPlacementHorizontal,
   alignment,
   isFirstSection,
-  overlayTextColor,
-  videoPopup
+  overlayTextColor
 }) => {
   const winHeight = use100vh()
   if (!media) {
@@ -253,7 +195,6 @@ const WideMedia = ({
   if (!height) {
     height = 'auto'
   }
-
   const { toggleModal } = useContext(AppContext)
 
   const fullWidth = width === 'fullWidth'
@@ -268,10 +209,9 @@ const WideMedia = ({
   }
 
   const overlayGridSettings = getHorizontalPlacementGridValues({ fullWidth, overlayPlacementHorizontal })
-  const hasOverlay = (text?._rawText && (text?._rawText !== null)) || (text?._rawHeadline && (text?._rawHeadline !== null)) || actions.length > 0
+  const hasOverlay = (text?.type) || (text?._rawText && (text?._rawText !== null)) || (text?._rawHeadline && (text?._rawHeadline !== null)) || actions.length > 0
 
   const renderMedia = (mediaItem, size, hasOverlay, autoHeight) => {
-
     if (mediaItem) {
       return (
         <MediaItem
@@ -304,47 +244,31 @@ const WideMedia = ({
         <WideMediaWrap height={heightValues[height]} overlayTextColor={overlayTextColor}>
           <Grid small={fullWidth ? '[1]' : 'container'} medium={fullWidth ? '[1]' : 'container'} large={fullWidth ? '[1]' : 'container'} larger={fullWidth ? '[1]' : 'container'}>
             <ContentWrap>
-              {/* <ResponsiveComponent
-                small={renderMedia(mediaSmall, 'small', hasOverlay, height === 'auto')}
-                medium={renderMedia(mediaMedium, 'medium', hasOverlay, height === 'auto')}
-                large={renderMedia(media, 'large', hasOverlay, height === 'auto')}
-              /> */}
-
               {renderMedia(media, 'large', hasOverlay, height === 'auto')}
-              {(hasOverlay || videoPopup) && (
+              {hasOverlay && (
                 <OverlayContent
                   padded={!fullWidth}
                   overlayTextAlignment={alignment}
                   verticalPlacement={overlayPlacementVertical}
                   height={heightValues[height]}
                 >
-                  {videoPopup && (
-                    <PlayButtonWrapper isFirstSection={isFirstSection}>
-                      <PlayButton
-                        size='large'
-                        icon='play_arrow'
-                        iconPosition='left'
-                        onClick={() => toggleModal(_key + '-video-modal')}
-                      >
-                        Experience Ascend
-                      </PlayButton>
-                    </PlayButtonWrapper>
-                  )}
                   {hasOverlay && (
                     <OverlaySection isFirstSection={isFirstSection} setTheme='darkGrey'>
                       <Container>
                         <Grid small='[1]' {...overlayGridSettings}>
                           <div style={{ maxWidth: '35rem', margin: 'auto'}}>
-                            <TextLockup
-                              eyebrow={text.eyebrow}
-                              text={text._rawText}
-                              headline={text._rawHeadline}
-                              textSize={paragraphSize}
-                              actions={actions}
-                              alignment={alignment}
-                              theme='transparent'
-                              transitionIn={!isFirstSection}
-                            />
+                            {text._rawText || text._rawHeadline ? (
+                              <TextLockup
+                                eyebrow={text.eyebrow}
+                                text={text._rawText}
+                                headline={text._rawHeadline}
+                                textSize={paragraphSize}
+                                actions={actions}
+                                alignment={alignment}
+                                theme='transparent'
+                                transitionIn={!isFirstSection}
+                              />
+                            ) : text}
                           </div>
                         </Grid>
                       </Container>
@@ -356,21 +280,6 @@ const WideMedia = ({
           </Grid>
         </WideMediaWrap>
       </Wrapper>
-      {videoPopup && (
-        <VideoModal id={_key + '-video-modal'}>
-          <ModalContent>
-            <Video
-              src={'https://vimeo.com/' + videoPopup}
-              id='modalVideo'
-              controls={true}
-              muted={false}
-              loop={false}
-              onEnded={() => toggleModal(false)}
-              allowFullscreen={true}
-            />
-          </ModalContent>
-        </VideoModal>
-      )}
     </>
   )
 }

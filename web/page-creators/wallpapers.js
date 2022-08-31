@@ -31,7 +31,7 @@ const createPages = (graphql, createPage) => new Promise((resolve, reject) => {
 
         if (slug) {
           createPage({
-            path: `wallpaper/${slug}`,
+            path: `wallpaper${slug.startsWith('/') ? '' : '/'}${slug}`,
             component: wallpaperTemplate,
             context: {
               id: edge.node.id

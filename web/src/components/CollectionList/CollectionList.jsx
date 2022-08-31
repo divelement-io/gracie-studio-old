@@ -11,6 +11,8 @@ import ScrollEntrance from 'src/components/ScrollEntrance'
 import ThemeSelector from 'src/components/ThemeSelector'
 import Actions from 'src/components/Actions'
 
+import { headerHeight } from 'src/components/Header'
+
 import {
 	globals,
 	typography,
@@ -20,6 +22,11 @@ import {
 import { themes } from 'src/styles/themes'
 
 import { getSlugLink } from 'src/utils/format'
+
+const Wrapper = styled(Section)`
+	${({title, isFirstSection}) => (!title && isFirstSection) && headerHeight('padding-top', 1)}
+	${({actions, isLastSection}) => (!actions && isFirstSection) && `padding-bottom: 0;`}
+`
 
 const SectionContent = styled(Container)`
 	text-align: center;
@@ -83,9 +90,13 @@ const CollectionList = ({
   isLastSection,
 	...props
 }) => {
+	console.log(actions)
 
 	return (
-		<Section
+		<Wrapper
+			title={title}
+			actions={actions}
+			padded={title}
 			prevTheme={prevTheme}
       setTheme={theme}
       nextTheme={nextTheme}
@@ -93,11 +104,13 @@ const CollectionList = ({
       isFirstSection={isFirstSection}
       isLastSection={isLastSection}
 		>
-			<ScrollEntrance>
-				<SectionContent>
-					<CollectionListTitle>{title}</CollectionListTitle>
-				</SectionContent>
-			</ScrollEntrance>
+			{title && (
+				<ScrollEntrance>
+					<SectionContent>
+						<CollectionListTitle>{title}</CollectionListTitle>
+					</SectionContent>
+				</ScrollEntrance>
+			)}
 			{collections.map(({ content: { main: {title, slug, mainImage} } }) => (
 				<CollectionItem>
 					<CollectionContent>
@@ -122,14 +135,16 @@ const CollectionList = ({
 					/>
 				</CollectionItem>
 			))}
-			<SectionContent>
-				<ScrollEntrance>
-					<CollectionListActions>
-						<Actions actions={actions} />
-					</CollectionListActions>
-				</ScrollEntrance>
-			</SectionContent>
-		</Section>
+			{actions && actions.length > 0 && (
+				<SectionContent>
+					<ScrollEntrance>
+						<CollectionListActions>
+							<Actions actions={actions} />
+						</CollectionListActions>
+					</ScrollEntrance>
+				</SectionContent>
+			)}
+		</Wrapper>
 	)
 }
 

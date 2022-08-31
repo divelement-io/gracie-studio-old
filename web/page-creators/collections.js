@@ -32,7 +32,7 @@ const createPages = (graphql, createPage) => new Promise((resolve, reject) => {
 
         if (slug) {
           createPage({
-            path: `collection/${slug}`,
+            path: `collection${slug.startsWith('/') ? '' : '/'}${slug}`,
             component: collectionTemplate,
             context: {
               id: edge.node.id
