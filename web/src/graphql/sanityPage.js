@@ -15,6 +15,9 @@ export const query = graphql`
           ...FiftyFifty
           ...CollectionList
           ...WallpaperGrid
+          ...PersonList
+          ...ShowroomList
+          ...RepresentativeList
         }
        # instagram {
        #   items {

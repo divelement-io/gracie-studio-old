@@ -176,10 +176,7 @@ const CustomForm = ({
 					font-weight: ${ typography.medium };
 					color: var(--light-text-color);
 					margin: 0 0 .5em 0;
-				`}>Update me about:</p>
-				<ThemedCheckbox checked={formType.general} value='general' onChange={handleFormType}>General</ThemedCheckbox>
-				<ThemedCheckbox checked={formType.careers} value='careers' onChange={handleFormType}>Careers</ThemedCheckbox>
-				<ThemedCheckbox checked={formType.enrollment} value='enrollment' onChange={handleFormType}>Enrollment</ThemedCheckbox>
+				`}>Sign up for info on events and new designs:</p>
 			</div>
 			<div>
 				<StyledInput
@@ -192,28 +189,7 @@ const CustomForm = ({
 					onChange={handleChange}
 				/>
 			</div>
-			<div>
-				<Grid small='[1]' medium='[1] [1]' rowGap='14px' colGap='14px'>
-					<StyledInput
-						size={size}
-						type="text"
-						placeholder='First name'
-						label={label}
-						name="FNAME"
-						setTheme='light'
-						onChange={handleChange}
-					/>
-					<StyledInput
-						size={size}
-						type="text"
-						placeholder='Last name'
-						label={label}
-						name="LNAME"
-						setTheme='light'
-						onChange={handleChange}
-					/>
-				</Grid>
-			</div>
+
 			<div style={{ paddingTop: '6px' }}>
 				<Button
 					type='submit'
@@ -224,7 +200,7 @@ const CustomForm = ({
 					iconPosition='right'
 					disabled={!validateEmail(formData?.EMAIL) || !formData?.FNAME || !formData?.LNAME || success || loading}
 				>
-					Submit
+					Sign Up
 				</Button>
 			</div>
 			<div>{error}</div>

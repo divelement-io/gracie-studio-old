@@ -9,8 +9,6 @@ import { MdCheck, MdClose } from 'react-icons/md'
 import { baseBorderRadius, uiElementSizes, responsiveUiSizes } from 'src/styles/globals'
 import Link from 'src/components/Link'
 
-console.log('buttonThemes', themes)
-
 const buttonSettings = {
 	radius: baseBorderRadius,
 	border: '1px solid',

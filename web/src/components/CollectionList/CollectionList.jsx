@@ -5,7 +5,6 @@ import styled from '@emotion/styled'
 import Section from 'src/components/Section'
 import Media from 'src/components/Media'
 import Grid, { Container } from 'src/components/Grid'
-import TextLockup from 'src/components/TextLockup'
 import Button from 'src/components/Button'
 import ScrollEntrance from 'src/components/ScrollEntrance'
 import ThemeSelector from 'src/components/ThemeSelector'
@@ -19,13 +18,14 @@ import {
 	colors,
 	util
 } from 'src/styles'
+
 import { themes } from 'src/styles/themes'
 
 import { getSlugLink } from 'src/utils/format'
 
 const Wrapper = styled(Section)`
 	${({title, isFirstSection}) => (!title && isFirstSection) && headerHeight('padding-top', 1)}
-	${({actions, isLastSection}) => (!actions && isFirstSection) && `padding-bottom: 0;`}
+	${({actions, isLastSection}) => (!actions && isLastSection) && `padding-bottom: 0;`}
 `
 
 const SectionContent = styled(Container)`
@@ -90,7 +90,7 @@ const CollectionList = ({
   isLastSection,
 	...props
 }) => {
-	console.log(actions)
+	console.log(collections)
 
 	return (
 		<Wrapper
@@ -111,7 +111,7 @@ const CollectionList = ({
 					</SectionContent>
 				</ScrollEntrance>
 			)}
-			{collections.map(({ content: { main: {title, slug, mainImage} } }) => (
+			{collections?.map(({ content: { main: {title, slug, mainImage} } }) => (
 				<CollectionItem>
 					<CollectionContent>
 					<ScrollEntrance>

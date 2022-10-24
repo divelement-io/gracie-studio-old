@@ -8,6 +8,10 @@ import Slideshow from 'src/components/Slideshow'
 import WallpaperGrid from 'src/components/WallpaperGrid'
 import CollectionList from 'src/components/CollectionList'
 
+import ShowroomList from 'src/components/ShowroomList'
+import PersonList from 'src/components/PersonList'
+import RepresentativeList from 'src/components/RepresentativeList'
+
 // plopImportModules
 
 const componentMap = {
@@ -17,7 +21,10 @@ const componentMap = {
   columns: Columns,
   twoColumnText: TwoColumnText,
   slideshow: Slideshow,
-  collectionList: CollectionList
+  collectionList: CollectionList,
+  personList: PersonList,
+  showroomList : ShowroomList,
+  representativeList: RepresentativeList
 }
 
 const ComponentRenderer = ({ item, prevTheme, nextTheme, index, isLastSection, isFirstSection }) => {

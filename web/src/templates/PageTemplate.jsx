@@ -9,11 +9,19 @@ import { getBackupShareImage } from 'src/utils/getBackupShareImage'
 
 const Page = ({ data }) => {
   const page = data?.sanityPage?.content?.main
+
+  if (!page) {
+    return null
+  }
+
   const pageMeta = data?.sanityPage?.content?.meta
   const path = page?.slug?.current
   let modules = page?.modules
-    // Filter out hidden modules
-    modules = modules?.filter(module => !module?.hidden)
+  // Filter out hidden modules
+  modules = modules?.filter(module => !module?.hidden)
+
+  console.log(page)
+  console.log(modules)
   const hasAtf = (modules[0]?._type === 'wideMedia' && modules[0]?.width === 'fullWidth') || modules[0]?.theme === 'darkGrey'
 
   return (

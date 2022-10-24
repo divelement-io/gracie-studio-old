@@ -23,6 +23,7 @@ const Wrapper = styled(Section)`
 
 const WideMediaWrap = styled.div`
   ${ ({ height }) => height !== 'auto' && `
+    height: ${height};
     position: relative;
     z-index: 2;
   ` }
@@ -30,6 +31,9 @@ const WideMediaWrap = styled.div`
 
 const ContentWrap = styled.div`
   position: relative;
+  ${ ({ height }) => height !== 'auto' && `
+    height: ${height};
+  ` }
 `
 
 const MediaItem = styled(Media)`
@@ -110,13 +114,13 @@ const OverlayContent = styled.div`
     max-width: 38em;
   }
   h4, h5 {
-    max-width: 36em;
+    max-width: 32em;
   }
   h6 {
     max-width: 16em;
   }
   p {
-    max-width: 20em;
+    max-width: 24em;
   }
 `
 
@@ -205,11 +209,11 @@ const WideMedia = ({
     auto: 'auto',
     fullHeight: (fullHeight && isFirstSection) ? fullHeight + 'px' : '100vh',
     mediumHeight: '70vh',
-    shortHeight: '50vh'
+    shortHeight: '35vh'
   }
 
   const overlayGridSettings = getHorizontalPlacementGridValues({ fullWidth, overlayPlacementHorizontal })
-  const hasOverlay = (text?.type) || (text?._rawText && (text?._rawText !== null)) || (text?._rawHeadline && (text?._rawHeadline !== null)) || actions.length > 0
+  const hasOverlay = text && ((text?.type) || (text?._rawText && (text?._rawText !== null)) || (text?._rawHeadline && (text?._rawHeadline !== null)) || actions.length > 0)
 
   const renderMedia = (mediaItem, size, hasOverlay, autoHeight) => {
     if (mediaItem) {
@@ -243,7 +247,7 @@ const WideMedia = ({
       >
         <WideMediaWrap height={heightValues[height]} overlayTextColor={overlayTextColor}>
           <Grid small={fullWidth ? '[1]' : 'container'} medium={fullWidth ? '[1]' : 'container'} large={fullWidth ? '[1]' : 'container'} larger={fullWidth ? '[1]' : 'container'}>
-            <ContentWrap>
+            <ContentWrap height={heightValues[height]}>
               {renderMedia(media, 'large', hasOverlay, height === 'auto')}
               {hasOverlay && (
                 <OverlayContent

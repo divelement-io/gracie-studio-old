@@ -24,7 +24,7 @@ export const bodyLarge = `
 `
 
 export const bodyMedium = `
-	${ responsiveStyles('font-size', 22, 12, 18, 18) }
+	${ responsiveStyles('font-size', 24, 24, 18, 18) }
 	line-height: 1.5em;
 	font-family: ${ primaryFont };
 	letter-spacing: 0;

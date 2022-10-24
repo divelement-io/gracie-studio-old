@@ -39,8 +39,49 @@ export const query = graphql`
         subCollections {
           content {
             main {
+              title
               slug {
                 current
+              }
+              mainImage {
+                asset {
+                  gatsbyImageData(layout: FULL_WIDTH)
+                  url
+                  title
+                  altText
+                  originalFilename
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        relatedCollections {
+          content {
+            main {
+              title
+              slug {
+                current
+              }
+              mainImage {
+                asset {
+                  gatsbyImageData(layout: FULL_WIDTH)
+                  url
+                  title
+                  altText
+                  originalFilename
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
               }
             }
           }

@@ -46,3 +46,18 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 		})
 	}
 }
+
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    SanityWallpaper: {
+      collections: {
+        type: ["SanityCollection"],
+        resolve: async (source, args, context, info) => {
+          const { entries } = await context.nodeModel.findAll({ type: `SanityCollection` })
+          return entries?.filter((collection) => collection?.content?.main?.wallpapers?.some(({_ref}) => _ref === source.id))
+        },
+      },
+    },
+  }
+  createResolvers(resolvers)
+}

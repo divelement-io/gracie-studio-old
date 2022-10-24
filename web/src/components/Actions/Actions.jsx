@@ -27,7 +27,7 @@ const Actions = ({
 	alignment = 'center'
 }) => {
 
-	return actions && actions.length > 0 && (
+	return (actions && actions.length > 0) && (
 		<ButtonActions buttons={actions} alignment={alignment} className='actions'>
 			{actions.map((action, index) => {
 				if (action.title) {

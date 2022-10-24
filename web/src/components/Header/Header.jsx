@@ -43,7 +43,7 @@ const NavLink = styled(Link)`
     right: 0;
     bottom: 0;
     height: 1px;
-    background-color: red;
+    background-color: ${ colors.white };
     opacity: 0;
     transform: translate3d(0, 0.5rem, 0);
     transition: color ${ animations.mediumSpeed } ease-in-out,

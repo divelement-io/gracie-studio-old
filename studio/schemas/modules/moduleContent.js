@@ -9,7 +9,10 @@ export default {
     { type: 'columns' },
     { type: 'twoColumnText' },
     { type: 'collectionList' },
-    { type: 'wallpaperGrid' }
+    { type: 'showroomList' },
+    { type: 'representativeList' },
+    { type: 'personList' },
+    { type: 'wallpaperGrid' },
     // plopAddModules
   ]
 }

@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "GW Gatsby Sanity Base",
+    "name": "Gracie",
     "basePath": "/"
   },
   "plugins": [

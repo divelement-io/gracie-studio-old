@@ -15,7 +15,7 @@ export default {
       options: {
         source: 'content.main.title',
         slugify: (input) =>
-          input
+          '/' + input
             .toLowerCase()
             //Remove spaces
             .replace(/\s+/g, "-")

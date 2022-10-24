@@ -5,7 +5,7 @@ export default {
   fieldsets: [
     {
       name: 'modules',
-      title: 'wallpaper Modules',
+      title: 'Wallpaper Modules',
       options: {
         collapsible: true,
         collapsed: true
@@ -41,7 +41,7 @@ export default {
       options: {
         source: 'content.main.title',
         slugify: (input) =>
-          input
+          '/' + input
             .toLowerCase()
             //Remove spaces
             .replace(/\s+/g, "-")
@@ -52,13 +52,22 @@ export default {
     },
     {
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Main Image',
       type: 'image',
       options: {
         hotspot: true
       },
       fieldset: 'main',
       validation: Rule => Rule.required()
+    },
+    {
+      name: 'atfImage',
+      title: 'Above the Fold Image',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      fieldset: 'main'
     },
     {
       name: 'description',
@@ -82,25 +91,17 @@ export default {
       type: 'array',
       of: [
         { type: 'inlineImage'}
-        // {
-        //   type: 'image',
-        //   fields: [
-        //     {
-        //       name: 'caption',
-        //       type: 'string',
-        //       title: 'Caption',
-        //       options: {
-        //         isHighlighted: true // <-- make this field easily accessible
-        //       }
-        //     },
-        //     {
-        //       // Editing this field will be hidden behind an "Edit"-button
-        //       name: 'attribution',
-        //       type: 'string',
-        //       title: 'Attribution',
-        //     }
-        //   ]
-        // }
+      ]
+    },
+    {
+      name: 'relatedWallpapers',
+      title: 'Related Wallpapers',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'wallpaper'}]
+        }
       ]
     },
     {
@@ -108,6 +109,14 @@ export default {
       title: 'Tags',
       type: 'tags',
       options: {}
+    },
+    {
+      name: 'panels',
+      title: 'Panels',
+      type: 'array',
+      of: [
+        {type: 'panel'}
+      ]
     },
     {
       name: 'modules',

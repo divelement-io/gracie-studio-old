@@ -13,9 +13,11 @@ import siteSettings from './siteSettings'
 // Content Types
 import page from './types/page'
 import menus from './types/menus'
-import post from './types/post'
+import article from './types/article'
 import wallpaper from './types/wallpaper'
 import collection from './types/collection'
+import person from './types/person'
+import showroom from './types/showroom'
 
 import theme from './modules/theme'
 import textLockup from './modules/textLockup'
@@ -30,6 +32,8 @@ import youTubeEmbed from './modules/youTubeEmbed'
 import embed from './modules/embed'
 import video from './modules/video'
 import descriptionList, { listItem } from './modules/descriptionList'
+import panel from './modules/panel'
+import address from './modules/address'
 
 // Modules
 import textSection from './modules/textSection'
@@ -52,6 +56,14 @@ import pageModule from './modules/pageModule'
 import wallpaperModule from './modules/wallpaperModule'
 import collectionModule from './modules/collectionModule'
 
+import showroomModule from './modules/showroomModule'
+import showroomList from './modules/showroomList'
+import representative from './modules/representative'
+import representativeList from './modules/representativeList'
+import personModule from './modules/personModule'
+import personList from './modules/personList'
+import salesContact from './modules/salesContact'
+
 // GraphQL Tab Modules
 import pageContent from './tabs/pageContent'
 import wallpaperContent from './tabs/wallpaperContent'
@@ -69,14 +81,17 @@ export default createSchema({
     siteSettings,
     page,
     menus,
-    post,
+    article,
     collection,
     wallpaper,
+    person,
     theme,
+    showroom,
     textLockup,
     actions,
     link,
     navLink,
+    address,
     button,
     youTubeEmbed,
     embed,
@@ -93,6 +108,7 @@ export default createSchema({
     fiftyFifty,
     columns,
     column,
+    panel,
     wallpaperGrid,
     collectionList,
     pageModule,
@@ -104,6 +120,15 @@ export default createSchema({
     seo,
     blockContent,
     blockText,
+
+    showroomModule,
+    showroomList,
+    representative,
+    representativeList,
+
+    personModule,
+    personList,
+    salesContact,
     // Product Specific Modules
     wallpaperModule,
     collectionModule,

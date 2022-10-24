@@ -1,7 +1,7 @@
 
 export default {
-  name: 'doc',
-  title: 'Doc',
+  name: 'showroom',
+  title: 'Showroom',
   type: 'document',
   liveEdit: false,
   // You probably want to uncomment the next line once you've made the pages documents in the Studio. This will remove the pages document type from the create-menus.
@@ -9,14 +9,14 @@ export default {
   fields: [
     {
       name: "content",
-      type: "pageContent",
+      type: "showroomModule",
     }
   ],
   preview: {
     select: {
-      title: 'content.main.title',
-      subtitle: 'heroText',
-      media: 'mainImage'
+      title: 'content.title',
+      subtitle: 'content.address.street',
+      media: 'content.image'
     }
   }
 }

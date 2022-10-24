@@ -6,9 +6,9 @@ import { PageMenuItem } from './structure/pages'
 import { CollectionMenuItem } from './structure/collections'
 import { WallpaperMenuItem } from './structure/wallpapers'
 
-// import { ProductVariantParent } from './structure/variants'
-// import { SubscriptionMenuItem } from './structure/subscriptions'
-
+import { ShowroomMenuItem } from './structure/showrooms'
+import { PeopleMenuItem } from './structure/people'
+import { JournalMenuItem } from './structure/journal'
 //
 // === Structure ===
 //
@@ -17,8 +17,11 @@ export default () =>
   S.list()
     .title('Content')
     .items([
-      PageMenuItem,
       ConfigMenu,
+      PageMenuItem,
       CollectionMenuItem,
-      WallpaperMenuItem
+      WallpaperMenuItem,
+      ShowroomMenuItem,
+      PeopleMenuItem,
+      JournalMenuItem
     ])

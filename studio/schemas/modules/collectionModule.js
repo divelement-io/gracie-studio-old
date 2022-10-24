@@ -16,7 +16,7 @@ export default {
       options: {
         source: 'content.main.title',
         slugify: (input) =>
-          input
+          '/' + input
             .toLowerCase()
             //Remove spaces
             .replace(/\s+/g, "-")
@@ -62,7 +62,8 @@ export default {
       title: 'Sub Collections',
       type: 'array',
       of: [
-        { type: 'reference',
+        {
+          type: 'reference',
           to: [{type: 'collection'}]
         }
       ]
@@ -72,7 +73,8 @@ export default {
       title: 'Related Collections',
       type: 'array',
       of: [
-        { type: 'reference',
+        {
+          type: 'reference',
           to: [{type: 'collection'}]
         }
       ]
