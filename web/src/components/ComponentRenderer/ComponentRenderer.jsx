@@ -24,7 +24,8 @@ const componentMap = {
   collectionList: CollectionList,
   personList: PersonList,
   showroomList : ShowroomList,
-  representativeList: RepresentativeList
+  representativeList: RepresentativeList,
+  wallpaperGrid: WallpaperGrid
 }
 
 const ComponentRenderer = ({ item, prevTheme, nextTheme, index, isLastSection, isFirstSection }) => {
